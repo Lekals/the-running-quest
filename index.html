@@ -10,806 +10,309 @@
 :root {
   --bg: #08090d;
   --surface: #0e1018;
-  --surface2: #141722;
   --border: rgba(180,160,100,0.15);
   --border2: rgba(180,160,100,0.3);
   --gold: #c9a84c;
   --gold2: #e8c97a;
   --gold3: #f5e4b0;
-  --silver: #8fa3b8;
   --text: #e8e0d0;
   --muted: #6b7280;
   --emerald: #2dd4a0;
-  --emerald2: rgba(45,212,160,0.12);
   --sapphire: #60a5fa;
-  --sapphire2: rgba(96,165,250,0.12);
   --ruby: #f87171;
   --ruby2: rgba(248,113,113,0.12);
-  --amethyst: #c084fc;
   --radius: 12px;
 }
-
 * { box-sizing: border-box; margin: 0; padding: 0; }
-
 body {
   font-family: 'Crimson Pro', Georgia, serif;
-  background: var(--bg);
-  color: var(--text);
-  min-height: 100vh;
-  overflow-x: hidden;
+  background: var(--bg); color: var(--text);
+  min-height: 100vh; overflow-x: hidden;
 }
-
-/* ─── Starfield background ─── */
 body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
+  content: ''; position: fixed; inset: 0;
   background-image:
     radial-gradient(1px 1px at 10% 20%, rgba(255,255,255,0.25) 0%, transparent 100%),
     radial-gradient(1px 1px at 30% 60%, rgba(255,255,255,0.2) 0%, transparent 100%),
     radial-gradient(1px 1px at 50% 15%, rgba(255,255,255,0.3) 0%, transparent 100%),
     radial-gradient(1px 1px at 70% 80%, rgba(255,255,255,0.15) 0%, transparent 100%),
     radial-gradient(1px 1px at 85% 35%, rgba(255,255,255,0.25) 0%, transparent 100%),
-    radial-gradient(1px 1px at 20% 90%, rgba(255,255,255,0.2) 0%, transparent 100%),
-    radial-gradient(1px 1px at 60% 45%, rgba(255,255,255,0.15) 0%, transparent 100%),
-    radial-gradient(1px 1px at 90% 55%, rgba(255,255,255,0.2) 0%, transparent 100%),
     radial-gradient(2px 2px at 15% 50%, rgba(201,168,76,0.2) 0%, transparent 100%),
-    radial-gradient(2px 2px at 75% 25%, rgba(96,165,250,0.15) 0%, transparent 100%),
-    radial-gradient(2px 2px at 40% 85%, rgba(201,168,76,0.15) 0%, transparent 100%);
-  pointer-events: none;
-  z-index: 0;
+    radial-gradient(2px 2px at 75% 25%, rgba(96,165,250,0.15) 0%, transparent 100%);
+  pointer-events: none; z-index: 0;
 }
 
-/* ─── Ornamental divider ─── */
-.ornament {
-  text-align: center;
-  color: var(--gold);
-  font-size: 12px;
-  letter-spacing: 8px;
-  opacity: 0.5;
-  margin: 1rem 0;
-}
-
-/* ═══════════════════════════
-   SETUP SCREEN
-══════════════════════════ */
+/* ═══ SETUP ═══ */
 #setup-screen {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  padding: 2rem 1.5rem;
+  position: relative; z-index: 1;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  min-height: 100vh; padding: 2rem 1.5rem;
 }
-
-.crest {
-  text-align: center;
-  margin-bottom: 2.5rem;
-}
-
+.crest { text-align: center; margin-bottom: 2.5rem; }
 .crest-icon {
-  font-size: 52px;
-  line-height: 1;
-  margin-bottom: 0.75rem;
+  font-size: 52px; line-height: 1; margin-bottom: 0.75rem;
   filter: drop-shadow(0 0 20px rgba(201,168,76,0.4));
   animation: float 4s ease-in-out infinite;
 }
-
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
-}
-
+@keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
 .crest-title {
-  font-family: 'Cinzel', serif;
-  font-size: 38px;
-  font-weight: 900;
-  letter-spacing: 3px;
+  font-family: 'Cinzel', serif; font-size: 38px; font-weight: 900; letter-spacing: 3px;
   background: linear-gradient(180deg, var(--gold3) 0%, var(--gold) 60%, #7a5f20 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  line-height: 1;
-  margin-bottom: 6px;
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  line-height: 1; margin-bottom: 6px;
 }
-
 .crest-subtitle {
-  font-family: 'Cinzel', serif;
-  font-size: 11px;
-  letter-spacing: 5px;
-  color: var(--gold);
-  opacity: 0.6;
-  text-transform: uppercase;
+  font-family: 'Cinzel', serif; font-size: 11px;
+  letter-spacing: 5px; color: var(--gold); opacity: 0.6; text-transform: uppercase;
 }
-
 .panel {
-  background: var(--surface);
-  border: 1px solid var(--border2);
-  border-radius: 16px;
-  padding: 2rem;
-  width: 100%;
-  max-width: 460px;
-  position: relative;
+  background: var(--surface); border: 1px solid var(--border2);
+  border-radius: 16px; padding: 2rem; width: 100%; max-width: 420px; position: relative;
 }
-
 .panel::before {
-  content: '';
-  position: absolute;
-  inset: -1px;
-  border-radius: 17px;
+  content: ''; position: absolute; inset: -1px; border-radius: 17px;
   background: linear-gradient(135deg, rgba(201,168,76,0.2), transparent 40%, transparent 60%, rgba(201,168,76,0.1));
   pointer-events: none;
 }
-
 .panel-title {
-  font-family: 'Cinzel', serif;
-  font-size: 14px;
-  letter-spacing: 2px;
-  color: var(--gold);
-  text-align: center;
-  margin-bottom: 1.75rem;
-  text-transform: uppercase;
+  font-family: 'Cinzel', serif; font-size: 14px; letter-spacing: 2px;
+  color: var(--gold); text-align: center; margin-bottom: 1.75rem; text-transform: uppercase;
 }
-
-.field-group { margin-bottom: 1.25rem; }
-
-.field-label {
-  font-family: 'Cinzel', serif;
-  font-size: 10px;
-  letter-spacing: 2px;
-  color: var(--gold);
-  opacity: 0.7;
-  text-transform: uppercase;
-  display: block;
-  margin-bottom: 6px;
-}
-
-.field-input {
-  width: 100%;
-  background: rgba(0,0,0,0.4);
-  border: 1px solid var(--border2);
-  border-radius: 8px;
-  padding: 11px 14px;
-  color: var(--text);
-  font-family: 'Crimson Pro', serif;
-  font-size: 16px;
-  transition: border-color 0.2s, box-shadow 0.2s;
-}
-
-.field-input:focus {
-  outline: none;
-  border-color: var(--gold);
-  box-shadow: 0 0 0 3px rgba(201,168,76,0.1);
-}
-
-.field-hint {
-  font-size: 13px;
-  color: var(--muted);
-  margin-top: 5px;
-  line-height: 1.5;
-  font-style: italic;
-}
-.field-hint a { color: var(--gold); text-decoration: none; opacity: 0.85; }
-.field-hint a:hover { opacity: 1; }
-
-.btn-quest {
+.btn-oauth {
   width: 100%;
   background: linear-gradient(135deg, #7a5f20, var(--gold) 50%, #7a5f20);
-  color: var(--bg);
-  border: none;
-  border-radius: 8px;
-  padding: 13px;
-  font-family: 'Cinzel', serif;
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: 2px;
-  cursor: pointer;
-  transition: opacity 0.2s, transform 0.1s;
-  margin-top: 0.5rem;
-  text-transform: uppercase;
+  color: var(--bg); border: none; border-radius: 8px; padding: 16px;
+  font-family: 'Cinzel', serif; font-size: 15px; font-weight: 600;
+  letter-spacing: 2px; cursor: pointer; transition: opacity 0.2s, transform 0.1s;
+  text-transform: uppercase; display: flex; align-items: center; justify-content: center; gap: 10px;
 }
-
-.btn-quest:hover { opacity: 0.9; }
-.btn-quest:active { transform: scale(0.98); }
-
+.btn-oauth:hover { opacity: 0.9; }
+.btn-oauth:active { transform: scale(0.98); }
+.oauth-hint {
+  font-size: 13px; color: var(--muted); text-align: center;
+  margin-top: 1rem; font-style: italic; line-height: 1.6;
+}
 .separator {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin: 1.5rem 0;
+  display: flex; align-items: center; gap: 12px; margin: 1.5rem 0;
 }
-.separator::before, .separator::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background: var(--border);
-}
-.separator span {
-  font-family: 'Cinzel', serif;
-  font-size: 10px;
-  letter-spacing: 2px;
-  color: var(--muted);
-}
-
+.separator::before, .separator::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+.separator span { font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: 2px; color: var(--muted); }
 .btn-demo {
-  width: 100%;
-  background: transparent;
-  border: 1px solid var(--border2);
-  color: var(--muted);
-  border-radius: 8px;
-  padding: 11px;
-  font-family: 'Crimson Pro', serif;
-  font-size: 15px;
-  cursor: pointer;
-  transition: all 0.2s;
-  font-style: italic;
+  width: 100%; background: transparent; border: 1px solid var(--border2);
+  color: var(--muted); border-radius: 8px; padding: 11px;
+  font-family: 'Crimson Pro', serif; font-size: 15px; cursor: pointer;
+  transition: all 0.2s; font-style: italic;
 }
 .btn-demo:hover { border-color: var(--gold); color: var(--gold3); }
-
 .error-banner {
-  display: none;
-  background: var(--ruby2);
-  border: 1px solid rgba(248,113,113,0.3);
-  border-radius: 8px;
-  padding: 10px 14px;
-  font-size: 14px;
-  color: var(--ruby);
-  margin-top: 1rem;
-  font-style: italic;
+  display: none; background: var(--ruby2); border: 1px solid rgba(248,113,113,0.3);
+  border-radius: 8px; padding: 10px 14px; font-size: 14px; color: var(--ruby);
+  margin-bottom: 1rem; font-style: italic;
 }
 
-/* ═══════════════════════════
-   LOADING
-══════════════════════════ */
+/* ═══ LOADING ═══ */
 #loading-screen {
-  display: none;
-  position: relative;
-  z-index: 1;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  gap: 1.5rem;
+  display: none; position: relative; z-index: 1;
+  flex-direction: column; align-items: center; justify-content: center;
+  min-height: 100vh; gap: 1.5rem;
 }
-
 .rune-spinner {
-  width: 60px;
-  height: 60px;
-  border: 2px solid rgba(201,168,76,0.1);
-  border-top-color: var(--gold);
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-  position: relative;
+  width: 60px; height: 60px; border: 2px solid rgba(201,168,76,0.1);
+  border-top-color: var(--gold); border-radius: 50%;
+  animation: spin 1s linear infinite; position: relative;
 }
-
 .rune-spinner::after {
-  content: '⟡';
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 20px;
-  color: var(--gold);
-  animation: spin 2s linear infinite reverse;
+  content: '⟡'; position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; color: var(--gold); animation: spin 2s linear infinite reverse;
 }
-
 @keyframes spin { to { transform: rotate(360deg); } }
-
 .loading-text {
-  font-family: 'Cinzel', serif;
-  font-size: 12px;
-  letter-spacing: 3px;
-  color: var(--gold);
-  opacity: 0.7;
-  text-transform: uppercase;
+  font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: 3px;
+  color: var(--gold); opacity: 0.7; text-transform: uppercase;
   animation: pulse 2s ease-in-out infinite;
 }
 @keyframes pulse { 0%,100%{opacity:0.4} 50%{opacity:0.9} }
 
-/* ═══════════════════════════
-   GAME SCREEN
-══════════════════════════ */
+/* ═══ GAME ═══ */
 #game-screen {
-  display: none;
-  position: relative;
-  z-index: 1;
-  max-width: 680px;
-  margin: 0 auto;
-  padding: 2rem 1.5rem 4rem;
+  display: none; position: relative; z-index: 1;
+  max-width: 680px; margin: 0 auto; padding: 2rem 1.5rem 4rem;
 }
-
-/* Top bar */
-.topbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 2.5rem;
-}
-
+.topbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.5rem; }
 .topbar-logo {
-  font-family: 'Cinzel', serif;
-  font-size: 18px;
-  font-weight: 900;
-  letter-spacing: 2px;
+  font-family: 'Cinzel', serif; font-size: 18px; font-weight: 900; letter-spacing: 2px;
   background: linear-gradient(135deg, var(--gold2), var(--gold));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
 }
-
-.topbar-actions { display: flex; gap: 8px; }
-
+.topbar-athlete { font-size: 14px; color: var(--muted); font-style: italic; }
+.topbar-actions { display: flex; gap: 8px; align-items: center; }
 .btn-sm {
-  background: transparent;
-  border: 1px solid var(--border2);
-  color: var(--muted);
-  border-radius: 6px;
-  padding: 6px 12px;
-  font-family: 'Crimson Pro', serif;
-  font-size: 13px;
-  cursor: pointer;
-  transition: all 0.2s;
+  background: transparent; border: 1px solid var(--border2); color: var(--muted);
+  border-radius: 6px; padding: 6px 12px; font-family: 'Crimson Pro', serif;
+  font-size: 13px; cursor: pointer; transition: all 0.2s;
 }
 .btn-sm:hover { border-color: var(--gold); color: var(--gold3); }
 
-/* ─── Hero card ─── */
 .hero-card {
-  position: relative;
-  border-radius: 20px;
-  padding: 2rem;
-  margin-bottom: 1.25rem;
-  overflow: hidden;
-  border: 1px solid rgba(201,168,76,0.25);
-  background: var(--surface);
+  position: relative; border-radius: 20px; padding: 2rem; margin-bottom: 1.25rem;
+  overflow: hidden; border: 1px solid rgba(201,168,76,0.25); background: var(--surface);
 }
-
 .hero-card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse at 80% 0%, rgba(201,168,76,0.08) 0%, transparent 60%),
-    radial-gradient(ellipse at 0% 100%, rgba(96,165,250,0.05) 0%, transparent 50%);
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 80% 0%, rgba(201,168,76,0.08) 0%, transparent 60%),
+              radial-gradient(ellipse at 0% 100%, rgba(96,165,250,0.05) 0%, transparent 50%);
 }
-
 .hero-card::after {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
-  opacity: 0.5;
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent); opacity: 0.5;
 }
-
 .rank-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: rgba(201,168,76,0.08);
-  border: 1px solid rgba(201,168,76,0.25);
-  border-radius: 20px;
-  padding: 4px 14px 4px 10px;
-  font-family: 'Cinzel', serif;
-  font-size: 11px;
-  letter-spacing: 1.5px;
-  color: var(--gold2);
-  margin-bottom: 1.25rem;
-  position: relative;
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.25);
+  border-radius: 20px; padding: 4px 14px 4px 10px;
+  font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 1.5px;
+  color: var(--gold2); margin-bottom: 1.25rem; position: relative;
 }
-
-.hero-level {
-  position: relative;
-  display: flex;
-  align-items: flex-end;
-  gap: 16px;
-  margin-bottom: 0.5rem;
-}
-
+.hero-level { position: relative; display: flex; align-items: flex-end; gap: 16px; margin-bottom: 0.5rem; }
 .level-num {
-  font-family: 'Cinzel', serif;
-  font-size: 80px;
-  font-weight: 900;
-  line-height: 1;
-  letter-spacing: -4px;
+  font-family: 'Cinzel', serif; font-size: 80px; font-weight: 900;
+  line-height: 1; letter-spacing: -4px;
   background: linear-gradient(180deg, #fff 0%, var(--gold3) 40%, var(--gold) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
 }
-
 .level-info { padding-bottom: 12px; }
-
-.level-title-text {
-  font-family: 'Cinzel', serif;
-  font-size: 22px;
-  font-weight: 600;
-  color: var(--gold3);
-  letter-spacing: 1px;
-  margin-bottom: 4px;
-}
-
-.level-xp-label {
-  font-size: 14px;
-  color: var(--muted);
-  font-style: italic;
-}
-
-/* XP bar */
+.level-title-text { font-family: 'Cinzel', serif; font-size: 22px; font-weight: 600; color: var(--gold3); letter-spacing: 1px; margin-bottom: 4px; }
+.level-xp-label { font-size: 14px; color: var(--muted); font-style: italic; }
 .xp-track {
-  position: relative;
-  background: rgba(0,0,0,0.4);
-  border: 1px solid var(--border);
-  border-radius: 100px;
-  height: 10px;
-  margin: 1.25rem 0 8px;
-  overflow: hidden;
+  position: relative; background: rgba(0,0,0,0.4); border: 1px solid var(--border);
+  border-radius: 100px; height: 10px; margin: 1.25rem 0 8px; overflow: hidden;
 }
-
 .xp-fill {
-  height: 100%;
-  border-radius: 100px;
+  height: 100%; border-radius: 100px;
   background: linear-gradient(90deg, #7a5f20, var(--gold2), #f5e4b0);
-  transition: width 1.2s cubic-bezier(0.4,0,0.2,1);
-  position: relative;
+  transition: width 1.2s cubic-bezier(0.4,0,0.2,1); position: relative;
 }
-
 .xp-fill::after {
-  content: '';
-  position: absolute;
-  right: 0; top: 0; bottom: 0;
-  width: 30px;
+  content: ''; position: absolute; right: 0; top: 0; bottom: 0; width: 30px;
   background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3));
-  border-radius: 100px;
-  animation: shimmer 2s ease-in-out infinite;
+  border-radius: 100px; animation: shimmer 2s ease-in-out infinite;
 }
-
 @keyframes shimmer { 0%,100%{opacity:0} 50%{opacity:1} }
-
-.xp-row {
-  display: flex;
-  justify-content: space-between;
-  font-size: 13px;
-}
+.xp-row { display: flex; justify-content: space-between; font-size: 13px; }
 .xp-row .xp-current { font-weight: 600; color: var(--gold2); }
 .xp-row .xp-next { color: var(--muted); font-style: italic; }
 
-/* ─── Stats row ─── */
-.stats-row {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  margin-bottom: 1.25rem;
-}
-
+.stats-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin-bottom: 1.25rem; }
 .stat-gem {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 1rem;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-  transition: border-color 0.2s;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 1rem; text-align: center;
+  position: relative; overflow: hidden; transition: border-color 0.2s;
 }
-
 .stat-gem:hover { border-color: var(--border2); }
-
 .stat-gem::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 2px;
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
   background: linear-gradient(90deg, transparent, var(--gold), transparent);
-  opacity: 0;
-  transition: opacity 0.2s;
+  opacity: 0; transition: opacity 0.2s;
 }
 .stat-gem:hover::before { opacity: 0.5; }
+.stat-val { font-family: 'Cinzel', serif; font-size: 26px; font-weight: 600; color: #fff; line-height: 1; margin-bottom: 4px; }
+.stat-val .unit { font-size: 14px; font-weight: 400; color: var(--muted); }
+.stat-lbl { font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 1.5px; color: var(--muted); text-transform: uppercase; }
 
-.stat-val {
-  font-family: 'Cinzel', serif;
-  font-size: 26px;
-  font-weight: 600;
-  color: #fff;
-  line-height: 1;
-  margin-bottom: 4px;
-}
-.stat-val .unit {
-  font-size: 14px;
-  font-weight: 400;
-  color: var(--muted);
-}
-.stat-lbl {
-  font-family: 'Cinzel', serif;
-  font-size: 9px;
-  letter-spacing: 1.5px;
-  color: var(--muted);
-  text-transform: uppercase;
-}
-
-/* ─── XP TOTAL ─── */
 .xp-total-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 1rem 1.5rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1.25rem;
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 1rem 1.5rem; display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem;
 }
-.xp-total-lbl {
-  font-family: 'Cinzel', serif;
-  font-size: 11px;
-  letter-spacing: 2px;
-  color: var(--muted);
-  text-transform: uppercase;
-}
-.xp-total-val {
-  font-family: 'Cinzel', serif;
-  font-size: 22px;
-  font-weight: 600;
-  color: var(--gold2);
-}
+.xp-total-lbl { font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 2px; color: var(--muted); text-transform: uppercase; }
+.xp-total-val { font-family: 'Cinzel', serif; font-size: 22px; font-weight: 600; color: var(--gold2); }
 .xp-total-val .xp-unit { font-size: 13px; color: var(--muted); font-weight: 400; margin-left: 4px; }
 
-/* ─── Section header ─── */
 .section-hdr {
-  font-family: 'Cinzel', serif;
-  font-size: 11px;
-  letter-spacing: 3px;
-  color: var(--gold);
-  text-transform: uppercase;
-  margin-bottom: 12px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  opacity: 0.8;
+  font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 3px; color: var(--gold);
+  text-transform: uppercase; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; opacity: 0.8;
 }
-.section-hdr::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background: var(--border);
-}
+.section-hdr::after { content: ''; flex: 1; height: 1px; background: var(--border); }
 
-/* ─── QUESTS ─── */
-.quest-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin-bottom: 1.5rem;
-}
-
+.quest-grid { display: flex; flex-direction: column; gap: 8px; margin-bottom: 1.5rem; }
 .quest-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 1rem 1.25rem;
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  transition: border-color 0.2s, background 0.2s;
-  position: relative;
-  overflow: hidden;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 1rem 1.25rem;
+  display: flex; align-items: center; gap: 14px;
+  transition: border-color 0.2s; position: relative; overflow: hidden;
 }
-
-.quest-card.done {
-  border-color: rgba(45,212,160,0.25);
-  background: rgba(45,212,160,0.04);
-}
-
+.quest-card.done { border-color: rgba(45,212,160,0.25); background: rgba(45,212,160,0.04); }
 .quest-card.done::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--emerald), transparent);
-  opacity: 0.5;
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--emerald), transparent); opacity: 0.5;
 }
-
 .quest-icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-  flex-shrink: 0;
-  background: rgba(201,168,76,0.08);
-  border: 1px solid var(--border);
+  width: 40px; height: 40px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0;
+  background: rgba(201,168,76,0.08); border: 1px solid var(--border);
 }
-
-.quest-card.done .quest-icon {
-  background: rgba(45,212,160,0.1);
-  border-color: rgba(45,212,160,0.3);
-}
-
+.quest-card.done .quest-icon { background: rgba(45,212,160,0.1); border-color: rgba(45,212,160,0.3); }
 .quest-body { flex: 1; min-width: 0; }
-
-.quest-name {
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--text);
-  margin-bottom: 2px;
-}
-
+.quest-name { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 2px; }
 .quest-card.done .quest-name { color: var(--emerald); }
-
-.quest-desc {
-  font-size: 13px;
-  color: var(--muted);
-  font-style: italic;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.quest-mini-bar {
-  height: 3px;
-  background: rgba(255,255,255,0.05);
-  border-radius: 100px;
-  margin-top: 6px;
-  overflow: hidden;
-}
-.quest-mini-fill {
-  height: 100%;
-  border-radius: 100px;
-  background: var(--gold);
-  transition: width 1s ease;
-}
+.quest-desc { font-size: 13px; color: var(--muted); font-style: italic; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.quest-mini-bar { height: 3px; background: rgba(255,255,255,0.05); border-radius: 100px; margin-top: 6px; overflow: hidden; }
+.quest-mini-fill { height: 100%; border-radius: 100px; background: var(--gold); transition: width 1s ease; }
 .quest-card.done .quest-mini-fill { background: var(--emerald); }
-
-.quest-reward {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 4px;
-  flex-shrink: 0;
-}
-
-.quest-xp {
-  font-family: 'Cinzel', serif;
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--gold2);
-  white-space: nowrap;
-}
-
+.quest-reward { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; flex-shrink: 0; }
+.quest-xp { font-family: 'Cinzel', serif; font-size: 13px; font-weight: 600; color: var(--gold2); white-space: nowrap; }
 .quest-card.done .quest-xp { color: var(--emerald); }
-
-.quest-check {
-  font-size: 16px;
-  display: none;
-}
+.quest-check { font-size: 16px; display: none; }
 .quest-card.done .quest-check { display: block; }
-
-/* Weekly quests */
-.quest-card.weekly {
-  border-color: rgba(96,165,250,0.15);
-}
-.quest-card.weekly .quest-icon { background: var(--sapphire2); border-color: rgba(96,165,250,0.25); }
+.quest-card.weekly { border-color: rgba(96,165,250,0.15); }
+.quest-card.weekly .quest-icon { background: rgba(96,165,250,0.1); border-color: rgba(96,165,250,0.25); }
 .quest-card.weekly .quest-mini-fill { background: var(--sapphire); }
 .quest-card.weekly .quest-xp { color: var(--sapphire); }
 .quest-card.weekly.done { border-color: rgba(45,212,160,0.25); }
 
-/* ─── Activities ─── */
 .activity-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 2rem; }
-
 .activity-row {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 12px 16px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  transition: border-color 0.2s;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 12px 16px;
+  display: flex; align-items: center; gap: 12px; transition: border-color 0.2s;
 }
 .activity-row:hover { border-color: var(--border2); }
-
 .act-icon {
-  width: 36px; height: 36px;
-  background: rgba(201,168,76,0.06);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 16px;
-  flex-shrink: 0;
+  width: 36px; height: 36px; background: rgba(201,168,76,0.06);
+  border: 1px solid var(--border); border-radius: 8px;
+  display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0;
 }
-
 .act-body { flex: 1; min-width: 0; }
 .act-name { font-size: 15px; font-weight: 600; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .act-meta { font-size: 12px; color: var(--muted); font-style: italic; margin-top: 1px; }
+.act-km { font-family: 'Cinzel', serif; font-size: 15px; font-weight: 600; color: var(--gold2); flex-shrink: 0; }
+.act-xp { font-size: 12px; color: var(--emerald); flex-shrink: 0; font-style: italic; }
 
-.act-km {
-  font-family: 'Cinzel', serif;
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--gold2);
-  flex-shrink: 0;
-}
-.act-xp {
-  font-size: 12px;
-  color: var(--emerald);
-  flex-shrink: 0;
-  font-style: italic;
-}
-
-/* ─── Next level card ─── */
 .next-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 1.25rem 1.5rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1.5rem;
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 1.25rem 1.5rem; display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;
 }
-
-.next-info h3 {
-  font-family: 'Cinzel', serif;
-  font-size: 15px;
-  color: var(--text);
-  margin-bottom: 4px;
-}
+.next-info h3 { font-family: 'Cinzel', serif; font-size: 15px; color: var(--text); margin-bottom: 4px; }
 .next-info p { font-size: 13px; color: var(--muted); font-style: italic; }
-
 .next-badge {
-  background: rgba(201,168,76,0.08);
-  border: 1px solid rgba(201,168,76,0.2);
-  border-radius: 10px;
-  padding: 10px 16px;
-  text-align: center;
+  background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.2);
+  border-radius: 10px; padding: 10px 16px; text-align: center;
 }
-.next-badge .nb-lbl {
-  font-family: 'Cinzel', serif;
-  font-size: 9px;
-  letter-spacing: 2px;
-  color: var(--gold);
-  opacity: 0.7;
-  display: block;
-}
-.next-badge .nb-val {
-  font-family: 'Cinzel', serif;
-  font-size: 24px;
-  font-weight: 900;
-  color: var(--gold3);
-}
-
+.next-badge .nb-lbl { font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 2px; color: var(--gold); opacity: 0.7; display: block; }
+.next-badge .nb-val { font-family: 'Cinzel', serif; font-size: 24px; font-weight: 900; color: var(--gold3); }
 .max-banner {
   background: linear-gradient(135deg, rgba(201,168,76,0.08), rgba(192,132,252,0.08));
-  border: 1px solid rgba(201,168,76,0.25);
-  border-radius: var(--radius);
-  padding: 1.5rem;
-  text-align: center;
-  margin-bottom: 1.5rem;
+  border: 1px solid rgba(201,168,76,0.25); border-radius: var(--radius);
+  padding: 1.5rem; text-align: center; margin-bottom: 1.5rem;
 }
 .max-banner .mb-crown { font-size: 36px; margin-bottom: 8px; }
-.max-banner h3 {
-  font-family: 'Cinzel', serif;
-  font-size: 18px;
-  color: var(--gold2);
-  margin-bottom: 4px;
-}
+.max-banner h3 { font-family: 'Cinzel', serif; font-size: 18px; color: var(--gold2); margin-bottom: 4px; }
 .max-banner p { font-size: 14px; color: var(--muted); font-style: italic; }
-
 .btn-refresh {
-  width: 100%;
-  background: transparent;
-  border: 1px solid var(--border2);
-  color: var(--muted);
-  border-radius: 8px;
-  padding: 11px;
-  font-family: 'Crimson Pro', serif;
-  font-size: 15px;
-  cursor: pointer;
-  transition: all 0.2s;
-  font-style: italic;
+  width: 100%; background: transparent; border: 1px solid var(--border2); color: var(--muted);
+  border-radius: 8px; padding: 11px; font-family: 'Crimson Pro', serif; font-size: 15px;
+  cursor: pointer; transition: all 0.2s; font-style: italic;
 }
 .btn-refresh:hover { border-color: var(--gold); color: var(--gold3); }
 </style>
@@ -823,33 +326,24 @@ body::before {
     <div class="crest-title">The Running Quest</div>
     <div class="crest-subtitle">Chronicle of the Road</div>
   </div>
-
   <div class="panel">
-    <div class="panel-title">Invoquer les archives Strava</div>
-
-    <div class="field-group">
-      <label class="field-label">Access Token</label>
-      <input class="field-input" type="text" id="access-token" placeholder="Colle ton token Strava…" />
-      <div class="field-hint">
-        <a href="https://www.strava.com/settings/api" target="_blank">strava.com/settings/api</a>
-        → copie le champ <em>"Your Access Token"</em> (scope activity:read requis)
-      </div>
-    </div>
-
+    <div class="panel-title">Commencer l'aventure</div>
     <div id="error-banner" class="error-banner"></div>
-
-    <button class="btn-quest" onclick="connect()">Commencer la Quête</button>
-
+    <button class="btn-oauth" onclick="startOAuth()">
+      🏃&nbsp;&nbsp;Se connecter avec Strava
+    </button>
+    <div class="oauth-hint">
+      Connexion sécurisée · Tes données restent privées
+    </div>
     <div class="separator"><span>ou</span></div>
-
-    <button class="btn-demo" onclick="loadDemo()">✦ Voyage avec des données de démo</button>
+    <button class="btn-demo" onclick="loadDemo()">✦ Essayer avec des données de démo</button>
   </div>
 </div>
 
 <!-- ═══ LOADING ═══ -->
 <div id="loading-screen">
   <div class="rune-spinner"></div>
-  <div class="loading-text">Consultation des archives…</div>
+  <div class="loading-text" id="loading-text">Consultation des archives…</div>
 </div>
 
 <!-- ═══ GAME ═══ -->
@@ -857,12 +351,12 @@ body::before {
   <div class="topbar">
     <div class="topbar-logo">The Running Quest</div>
     <div class="topbar-actions">
+      <span class="topbar-athlete" id="athlete-name"></span>
       <button class="btn-sm" onclick="refreshData()">↻ Sync</button>
       <button class="btn-sm" onclick="logout()">← Quitter</button>
     </div>
   </div>
 
-  <!-- Hero -->
   <div class="hero-card">
     <div class="rank-badge">⚔️ &nbsp;Rang du Voyageur</div>
     <div class="hero-level">
@@ -872,16 +366,13 @@ body::before {
         <div class="level-xp-label" id="level-xp-label">0 XP accumulés</div>
       </div>
     </div>
-    <div class="xp-track">
-      <div class="xp-fill" id="xp-fill" style="width:0%"></div>
-    </div>
+    <div class="xp-track"><div class="xp-fill" id="xp-fill" style="width:0%"></div></div>
     <div class="xp-row">
       <span class="xp-current" id="xp-current-km">0 km</span>
-      <span class="xp-next" id="xp-next-label">vers le niveau 2 → 50 km</span>
+      <span class="xp-next" id="xp-next-label">vers le niveau 2</span>
     </div>
   </div>
 
-  <!-- Stats -->
   <div class="stats-row">
     <div class="stat-gem">
       <div class="stat-val" id="stat-total">0 <span class="unit">km</span></div>
@@ -897,21 +388,17 @@ body::before {
     </div>
   </div>
 
-  <!-- XP total -->
   <div class="xp-total-card">
     <div class="xp-total-lbl">Points d'Expérience</div>
     <div class="xp-total-val" id="xp-total-val">0 <span class="xp-unit">XP</span></div>
   </div>
 
-  <!-- Weekly quests -->
   <div class="section-hdr">Quêtes hebdomadaires</div>
   <div class="quest-grid" id="weekly-quests"></div>
 
-  <!-- Milestone quests -->
   <div class="section-hdr">Hauts Faits</div>
   <div class="quest-grid" id="milestone-quests"></div>
 
-  <!-- Next level -->
   <div id="next-level-wrap">
     <div class="next-card">
       <div class="next-info">
@@ -933,415 +420,271 @@ body::before {
     </div>
   </div>
 
-  <!-- Activities -->
   <div class="section-hdr">Dernières sorties</div>
   <div class="activity-list" id="activity-list"></div>
-
   <button class="btn-refresh" onclick="refreshData()">↻ Actualiser les données</button>
 </div>
 
 <script>
-// ═══════════════════════════════════════════
-// LEVEL SYSTEM — 200 levels, 0→10000 km
-// Titles change every 5 levels (40 titles)
-// ═══════════════════════════════════════════
-const RANK_TITLES = [
-  "Novice",            // 1-5
-  "Marcheur",          // 6-10
-  "Coureur Confirmé",  // 11-15
-  "Pistard",           // 16-20
-  "Traileur",          // 21-25
-  "Endurci",           // 26-30
-  "Éclaireur",         // 31-35
-  "Guerrier du Bitume",// 36-40
-  "Sprinter d'Élite",  // 41-45
-  "Gardien des Sentiers",// 46-50
-  "Conquérant",        // 51-55
-  "Ironclad",          // 56-60
-  "Maître Coureur",    // 61-65
-  "Seigneur du Mile",  // 66-70
-  "Sentinelle",        // 71-75
-  "Chevalier des Routes",// 76-80
-  "Champion",          // 81-85
-  "Titan",             // 86-90
-  "Maître Absolu",     // 91-95
-  "Grand Explorateur", // 96-100
-  "Sage du Marathon",  // 101-105
-  "Oracle des Pistes", // 106-110
-  "Warlord",           // 111-115
-  "Berserker",         // 116-120
-  "Nomade Éternel",    // 121-125
-  "Architecte du Temps",// 126-130
-  "Fantôme du Sentier",// 131-135
-  "Gardien du Cosmos", // 136-140
-  "Extracteur d'Ether",        // 141-145
-  "Lumière Dorée",     // 146-150
-  "Étoile Filante",    // 151-155
-  "Astre",             // 156-160
-  "Supernova",         // 161-165
-  "Nébuleuse",         // 166-170
-  "Transcendant",      // 171-175
-  "Démiurge",          // 176-180
-  "Entité Primordiale",// 181-185
-  "Dieu du Mouvement", // 186-190
-  "Légende Absolue",   // 191-195
-  "L'Éternel",         // 196-200
-];
+// ═══ CONFIG ═══
+const CLIENT_ID = '235329';
+const REDIRECT_URI = window.location.origin + window.location.pathname;
 
-function getRankTitle(level) {
-  const idx = Math.min(Math.floor((level - 1) / 5), RANK_TITLES.length - 1);
-  return RANK_TITLES[idx];
+// ═══ OAUTH ═══
+function startOAuth() {
+  const state = Math.random().toString(36).slice(2);
+  sessionStorage.setItem('oauth_state', state);
+  const url = `https://www.strava.com/oauth/authorize`
+    + `?client_id=${CLIENT_ID}`
+    + `&redirect_uri=${encodeURIComponent(REDIRECT_URI)}`
+    + `&response_type=code`
+    + `&scope=activity:read_all`
+    + `&state=${state}`;
+  window.location.href = url;
 }
 
-// XP formula: km * 10 + quest bonuses
-// Level thresholds: exponential curve 0→10000km mapped to 200 levels
-function kmForLevel(level) {
-  if (level <= 1) return 0;
-  if (level > 200) return 10000;
-  // Exponential: level 2 = 50km, level 200 = 10000km
-  const t = (level - 1) / 199;
-  return Math.round(50 + (9950) * Math.pow(t, 1.6));
-}
+async function handleOAuthCallback() {
+  const params = new URLSearchParams(window.location.search);
+  const code = params.get('code');
+  const state = params.get('state');
+  const error = params.get('error');
 
-function getLevel(totalKm) {
-  let lv = 1;
-  for (let l = 2; l <= 200; l++) {
-    if (totalKm >= kmForLevel(l)) lv = l;
-    else break;
+  if (error) { showError("Autorisation refusée par Strava."); return false; }
+  if (!code) return false;
+
+  const savedState = sessionStorage.getItem('oauth_state');
+  if (state !== savedState) { showError("Erreur de sécurité (state mismatch)."); return false; }
+
+  history.replaceState(null, '', window.location.pathname);
+  sessionStorage.removeItem('oauth_state');
+
+  setLoading("Échange du code OAuth…");
+
+  try {
+    const res = await fetch('/api/exchange', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ code }),
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || 'Erreur serveur');
+
+    currentToken = data.access_token;
+    if (data.athlete?.firstname) {
+      document.getElementById('athlete-name').textContent = data.athlete.firstname + ' ' + (data.athlete.lastname || '');
+    }
+    return true;
+  } catch(e) {
+    showError(e.message);
+    return false;
   }
+}
+
+// ═══ LEVELS ═══
+const RANK_TITLES = [
+  "Novice","Marcheur","Coureur Confirmé","Pistard","Traileur",
+  "Endurci","Éclaireur","Guerrier du Bitume","Sprinter d'Élite","Gardien des Sentiers",
+  "Conquérant","Ironclad","Maître Coureur","Seigneur du Mile","Sentinelle",
+  "Chevalier des Routes","Champion","Titan","Maître Absolu","Grand Explorateur",
+  "Sage du Marathon","Oracle des Pistes","Warlord","Berserker","Nomade Éternel",
+  "Architecte du Temps","Fantôme du Sentier","Gardien du Cosmos","Invocateur","Lumière Dorée",
+  "Étoile Filante","Astre","Supernova","Nébuleuse","Transcendant",
+  "Démiurge","Entité Primordiale","Dieu du Mouvement","Légende Absolue","L'Éternel",
+];
+function getRankTitle(l) { return RANK_TITLES[Math.min(Math.floor((l-1)/5), RANK_TITLES.length-1)]; }
+function kmForLevel(l) {
+  if (l <= 1) return 0;
+  if (l > 200) return 10000;
+  return Math.round(50 + 9950 * Math.pow((l-1)/199, 1.6));
+}
+function getLevel(km) {
+  let lv = 1;
+  for (let l = 2; l <= 200; l++) { if (km >= kmForLevel(l)) lv = l; else break; }
   return lv;
 }
 
-// ═══════════════════════════════════════════
-// QUEST DEFINITIONS
-// ═══════════════════════════════════════════
-const WEEKLY_QUESTS = [
-  {
-    id: "w_10k",
-    icon: "🏃",
-    name: "Foulée de 10 km",
-    desc: "Cours un 10 km cette semaine",
-    check: (acts) => acts.some(a => a.distance >= 10000),
-    progress: (acts) => {
-      const best = Math.max(0, ...acts.map(a => a.distance));
-      return Math.min(1, best / 10000);
-    },
-    xp: 200,
-    type: "weekly"
-  },
-  {
-    id: "w_3runs",
-    icon: "🔥",
-    name: "Triple Effort",
-    desc: "Réalise 3 sorties cette semaine",
-    check: (acts) => acts.length >= 3,
-    progress: (acts) => Math.min(1, acts.length / 3),
-    xp: 150,
-    type: "weekly"
-  },
-  {
-    id: "w_25k",
-    icon: "⚡",
-    name: "Semaine Active",
-    desc: "Cours 25 km au total cette semaine",
-    check: (acts) => acts.reduce((s, a) => s + a.distance, 0) >= 25000,
-    progress: (acts) => Math.min(1, acts.reduce((s, a) => s + a.distance, 0) / 25000),
-    xp: 300,
-    type: "weekly"
-  },
-  {
-    id: "w_42k",
-    icon: "🦅",
-    name: "Marathonien Hebdo",
-    desc: "Cours 42 km cette semaine",
-    check: (acts) => acts.reduce((s, a) => s + a.distance, 0) >= 42000,
-    progress: (acts) => Math.min(1, acts.reduce((s, a) => s + a.distance, 0) / 42000),
-    xp: 600,
-    type: "weekly"
-  },
-  {
-    id: "w_trail",
-    icon: "🌲",
-    name: "Appel de la Forêt",
-    desc: "Réalise une sortie Trail cette semaine",
-    check: (acts) => acts.some(a => a.type === "TrailRun"),
-    progress: (acts) => acts.some(a => a.type === "TrailRun") ? 1 : 0,
-    xp: 180,
-    type: "weekly"
-  },
+// ═══ QUESTS ═══
+const WQ = [
+  { id:"w1", icon:"🏃", name:"Foulée de 10 km", desc:"Cours un 10 km cette semaine",
+    check:a=>a.some(x=>x.distance>=10000), progress:a=>Math.min(1,Math.max(0,...a.map(x=>x.distance))/10000), xp:200 },
+  { id:"w2", icon:"🔥", name:"Triple Effort", desc:"Réalise 3 sorties cette semaine",
+    check:a=>a.length>=3, progress:a=>Math.min(1,a.length/3), xp:150 },
+  { id:"w3", icon:"⚡", name:"Semaine Active", desc:"Cours 25 km cette semaine",
+    check:a=>a.reduce((s,x)=>s+x.distance,0)>=25000, progress:a=>Math.min(1,a.reduce((s,x)=>s+x.distance,0)/25000), xp:300 },
+  { id:"w4", icon:"🦅", name:"Marathonien Hebdo", desc:"Cours 42 km cette semaine",
+    check:a=>a.reduce((s,x)=>s+x.distance,0)>=42000, progress:a=>Math.min(1,a.reduce((s,x)=>s+x.distance,0)/42000), xp:600 },
+  { id:"w5", icon:"🌲", name:"Appel de la Forêt", desc:"Réalise un Trail cette semaine",
+    check:a=>a.some(x=>x.type==="TrailRun"), progress:a=>a.some(x=>x.type==="TrailRun")?1:0, xp:180 },
+];
+const MQ = [
+  { id:"m1", icon:"✦", name:"Premier Pas", desc:"Ta première sortie", check:a=>a.length>=1, progress:a=>Math.min(1,a.length), xp:100 },
+  { id:"m2", icon:"🗡️", name:"Le 5 km Fondateur", desc:"Cours 5 km d'une traite", check:a=>a.some(x=>x.distance>=5000), progress:a=>Math.min(1,Math.max(0,...a.map(x=>x.distance))/5000), xp:150 },
+  { id:"m3", icon:"⚔️", name:"Dix Kilomètres de Gloire", desc:"Cours 10 km d'une traite", check:a=>a.some(x=>x.distance>=10000), progress:a=>Math.min(1,Math.max(0,...a.map(x=>x.distance))/10000), xp:300 },
+  { id:"m4", icon:"🏹", name:"Semi-Marathon", desc:"Cours 21,1 km d'une traite", check:a=>a.some(x=>x.distance>=21100), progress:a=>Math.min(1,Math.max(0,...a.map(x=>x.distance))/21100), xp:600 },
+  { id:"m5", icon:"🛡️", name:"L'Épreuve du Marathon", desc:"Cours 42,2 km d'une traite", check:a=>a.some(x=>x.distance>=42200), progress:a=>Math.min(1,Math.max(0,...a.map(x=>x.distance))/42200), xp:1500 },
+  { id:"m6", icon:"🌟", name:"Ultra-Guerrier", desc:"Cours 100 km d'une traite", check:a=>a.some(x=>x.distance>=100000), progress:a=>Math.min(1,Math.max(0,...a.map(x=>x.distance))/100000), xp:5000 },
+  { id:"m7", icon:"💎", name:"Centurion", desc:"Accumule 100 km au total", check:a=>a.reduce((s,x)=>s+x.distance,0)>=100000, progress:a=>Math.min(1,a.reduce((s,x)=>s+x.distance,0)/100000), xp:500 },
+  { id:"m8", icon:"🔮", name:"Seigneur des Distances", desc:"Accumule 500 km au total", check:a=>a.reduce((s,x)=>s+x.distance,0)>=500000, progress:a=>Math.min(1,a.reduce((s,x)=>s+x.distance,0)/500000), xp:2000 },
+  { id:"m9", icon:"👑", name:"Millénaire", desc:"Accumule 1 000 km au total", check:a=>a.reduce((s,x)=>s+x.distance,0)>=1000000, progress:a=>Math.min(1,a.reduce((s,x)=>s+x.distance,0)/1000000), xp:5000 },
+  { id:"m10", icon:"🔱", name:"La Dizaine", desc:"Effectue 10 sorties", check:a=>a.length>=10, progress:a=>Math.min(1,a.length/10), xp:200 },
+  { id:"m11", icon:"⭐", name:"Vétéran", desc:"Effectue 50 sorties", check:a=>a.length>=50, progress:a=>Math.min(1,a.length/50), xp:800 },
+  { id:"m12", icon:"🌲", name:"Fils de la Forêt", desc:"10 sorties Trail", check:a=>a.filter(x=>x.type==="TrailRun").length>=10, progress:a=>Math.min(1,a.filter(x=>x.type==="TrailRun").length/10), xp:600 },
 ];
 
-const MILESTONE_QUESTS = [
-  { id: "m_first", icon: "✦", name: "Premier Pas", desc: "Réalise ta première sortie", check: (all) => all.length >= 1, progress: (all) => Math.min(1, all.length), xp: 100 },
-  { id: "m_5k", icon: "🗡️", name: "Le 5 km Fondateur", desc: "Cours un 5 km d'une traite", check: (all) => all.some(a => a.distance >= 5000), progress: (all) => Math.min(1, Math.max(0, ...all.map(a=>a.distance)) / 5000), xp: 150 },
-  { id: "m_10k", icon: "⚔️", name: "Dix Kilomètres de Gloire", desc: "Cours un 10 km d'une traite", check: (all) => all.some(a => a.distance >= 10000), progress: (all) => Math.min(1, Math.max(0, ...all.map(a=>a.distance)) / 10000), xp: 300 },
-  { id: "m_hm", icon: "🏹", name: "Semi-Marathon", desc: "Cours 21,1 km d'une traite", check: (all) => all.some(a => a.distance >= 21100), progress: (all) => Math.min(1, Math.max(0, ...all.map(a=>a.distance)) / 21100), xp: 600 },
-  { id: "m_marathon", icon: "🛡️", name: "L'Épreuve du Marathon", desc: "Cours 42,2 km d'une traite", check: (all) => all.some(a => a.distance >= 42200), progress: (all) => Math.min(1, Math.max(0, ...all.map(a=>a.distance)) / 42200), xp: 1500 },
-  { id: "m_ultra", icon: "🌟", name: "Ultra-Guerrier", desc: "Cours 100 km d'une traite", check: (all) => all.some(a => a.distance >= 100000), progress: (all) => Math.min(1, Math.max(0, ...all.map(a=>a.distance)) / 100000), xp: 5000 },
-  { id: "m_100k", icon: "💎", name: "Centurion", desc: "Accumule 100 km au total", check: (all) => all.reduce((s,a)=>s+a.distance,0) >= 100000, progress: (all) => Math.min(1, all.reduce((s,a)=>s+a.distance,0) / 100000), xp: 500 },
-  { id: "m_500k", icon: "🔮", name: "Seigneur des Distances", desc: "Accumule 500 km au total", check: (all) => all.reduce((s,a)=>s+a.distance,0) >= 500000, progress: (all) => Math.min(1, all.reduce((s,a)=>s+a.distance,0) / 500000), xp: 2000 },
-  { id: "m_1000k", icon: "👑", name: "Millénaire", desc: "Accumule 1 000 km au total", check: (all) => all.reduce((s,a)=>s+a.distance,0) >= 1000000, progress: (all) => Math.min(1, all.reduce((s,a)=>s+a.distance,0) / 1000000), xp: 5000 },
-  { id: "m_10runs", icon: "🔱", name: "La Dizaine", desc: "Effectue 10 sorties", check: (all) => all.length >= 10, progress: (all) => Math.min(1, all.length / 10), xp: 200 },
-  { id: "m_50runs", icon: "⭐", name: "Vétéran", desc: "Effectue 50 sorties", check: (all) => all.length >= 50, progress: (all) => Math.min(1, all.length / 50), xp: 800 },
-  { id: "m_trail_10", icon: "🌲", name: "Fils de la Forêt", desc: "Réalise 10 sorties Trail", check: (all) => all.filter(a=>a.type==="TrailRun").length >= 10, progress: (all) => Math.min(1, all.filter(a=>a.type==="TrailRun").length / 10), xp: 600 },
-];
-
-const VALID_TYPES = ["Run", "TrailRun", "VirtualRun", "Treadmill"];
+const VALID = ["Run","TrailRun","VirtualRun","Treadmill"];
 let currentToken = null;
 
-// ═══════════════════════════════════════════
-// HELPERS
-// ═══════════════════════════════════════════
-function getWeekActivities(allActs) {
-  const now = new Date();
-  const monday = new Date(now);
-  monday.setHours(0,0,0,0);
-  monday.setDate(now.getDate() - ((now.getDay() + 6) % 7));
-  return allActs.filter(a => new Date(a.start_date) >= monday);
+function getWeekActs(all) {
+  const mon = new Date(); mon.setHours(0,0,0,0); mon.setDate(mon.getDate()-((mon.getDay()+6)%7));
+  return all.filter(a=>new Date(a.start_date)>=mon);
+}
+function calcXP(all, week) {
+  let xp = all.reduce((s,a)=>s+(a.distance/1000)*10, 0);
+  MQ.forEach(q=>{ if(q.check(all)) xp+=q.xp; });
+  WQ.forEach(q=>{ if(q.check(week)) xp+=q.xp; });
+  return Math.round(xp);
+}
+function icon(type) { return type==="TrailRun"?"🌲":type==="VirtualRun"||type==="Treadmill"?"🏠":"🏃"; }
+function label(type) { return type==="TrailRun"?"Trail":type==="VirtualRun"||type==="Treadmill"?"Tapis":"Route"; }
+function fdate(d) { return new Date(d).toLocaleDateString('fr-FR',{day:'numeric',month:'short'}); }
+
+function questCard(q, done, prog, weekly=false) {
+  return `<div class="quest-card ${weekly?'weekly':''} ${done?'done':''}">
+    <div class="quest-icon">${q.icon}</div>
+    <div class="quest-body">
+      <div class="quest-name">${q.name}</div>
+      <div class="quest-desc">${q.desc} · ${done?'Accomplie !':Math.round(prog*100)+'%'}</div>
+      <div class="quest-mini-bar"><div class="quest-mini-fill" style="width:${Math.round(prog*100)}%"></div></div>
+    </div>
+    <div class="quest-reward"><div class="quest-xp">+${q.xp} XP</div><div class="quest-check">✓</div></div>
+  </div>`;
 }
 
-function calcTotalXP(allActs, weekActs) {
-  const kmXP = allActs.reduce((s,a) => s + (a.distance/1000)*10, 0);
-  let questXP = 0;
-  MILESTONE_QUESTS.forEach(q => { if (q.check(allActs)) questXP += q.xp; });
-  WEEKLY_QUESTS.forEach(q => { if (q.check(weekActs)) questXP += q.xp; });
-  return Math.round(kmXP + questXP);
-}
-
-function getActivityIcon(type) {
-  if (type === "TrailRun") return "🌲";
-  if (type === "VirtualRun" || type === "Treadmill") return "🏠";
-  return "🏃";
-}
-
-function getTypeLabel(type) {
-  if (type === "TrailRun") return "Trail";
-  if (type === "VirtualRun" || type === "Treadmill") return "Tapis";
-  return "Route";
-}
-
-function formatDate(d) {
-  return new Date(d).toLocaleDateString('fr-FR', { day:'numeric', month:'short' });
-}
-
-function pct2str(p) { return Math.round(p * 100) + '%'; }
-
-// ═══════════════════════════════════════════
-// RENDER
-// ═══════════════════════════════════════════
 function renderGame(activities) {
-  const weekActs = getWeekActivities(activities);
-  const totalKm = parseFloat((activities.reduce((s,a) => s+(a.distance/1000), 0)).toFixed(1));
-  const level = getLevel(totalKm);
-  const title = getRankTitle(level);
-  const totalXP = calcTotalXP(activities, weekActs);
+  const week = getWeekActs(activities);
+  const totalKm = parseFloat((activities.reduce((s,a)=>s+(a.distance/1000),0)).toFixed(1));
+  const lv = getLevel(totalKm);
+  const xp = calcXP(activities, week);
+  const floor = kmForLevel(lv);
+  const ceil = lv < 200 ? kmForLevel(lv+1) : floor;
+  const pct = lv>=200 ? 100 : Math.min(100,Math.round(((totalKm-floor)/(ceil-floor))*100));
 
-  // XP bar
-  const curFloor = kmForLevel(level);
-  const nextCeil = level < 200 ? kmForLevel(level + 1) : curFloor;
-  const pct = level >= 200 ? 100 : Math.min(100, Math.round(((totalKm - curFloor) / (nextCeil - curFloor)) * 100));
+  document.getElementById('level-num').textContent = lv;
+  document.getElementById('level-title').textContent = getRankTitle(lv);
+  document.getElementById('level-xp-label').textContent = xp.toLocaleString('fr-FR')+' XP accumulés';
+  document.getElementById('xp-current-km').textContent = totalKm+' km';
 
-  document.getElementById('level-num').textContent = level;
-  document.getElementById('level-title').textContent = title;
-  document.getElementById('level-xp-label').textContent = totalXP.toLocaleString('fr-FR') + ' XP accumulés';
-  document.getElementById('xp-current-km').textContent = totalKm + ' km';
-
-  if (level < 200) {
-    document.getElementById('xp-next-label').textContent = `vers le niveau ${level+1} → ${nextCeil} km`;
-    document.getElementById('next-level-wrap').style.display = '';
-    document.getElementById('max-level-wrap').style.display = 'none';
-    document.getElementById('next-title').textContent = getRankTitle(level + 1);
-    document.getElementById('next-detail').textContent = `Il te reste ${Math.max(0,(nextCeil - totalKm)).toFixed(1)} km`;
-    document.getElementById('next-num').textContent = level + 1;
+  if (lv < 200) {
+    document.getElementById('xp-next-label').textContent = `vers niveau ${lv+1} → ${ceil} km`;
+    document.getElementById('next-level-wrap').style.display='';
+    document.getElementById('max-level-wrap').style.display='none';
+    document.getElementById('next-title').textContent = getRankTitle(lv+1);
+    document.getElementById('next-detail').textContent = `Il te reste ${Math.max(0,ceil-totalKm).toFixed(1)} km`;
+    document.getElementById('next-num').textContent = lv+1;
   } else {
-    document.getElementById('xp-next-label').textContent = 'Rang suprême atteint';
-    document.getElementById('next-level-wrap').style.display = 'none';
-    document.getElementById('max-level-wrap').style.display = '';
+    document.getElementById('xp-next-label').textContent='Rang suprême atteint';
+    document.getElementById('next-level-wrap').style.display='none';
+    document.getElementById('max-level-wrap').style.display='';
   }
 
-  setTimeout(() => {
-    document.getElementById('xp-fill').style.width = pct + '%';
-  }, 300);
+  setTimeout(()=>document.getElementById('xp-fill').style.width=pct+'%', 300);
 
-  // Stats
-  const avg = activities.length ? (totalKm / activities.length).toFixed(1) : 0;
-  document.getElementById('stat-total').innerHTML = `${totalKm} <span class="unit">km</span>`;
-  document.getElementById('stat-runs').textContent = activities.length;
-  document.getElementById('stat-avg').innerHTML = `${avg} <span class="unit">km</span>`;
-  document.getElementById('xp-total-val').innerHTML = `${totalXP.toLocaleString('fr-FR')} <span class="xp-unit">XP</span>`;
+  const avg = activities.length ? (totalKm/activities.length).toFixed(1) : 0;
+  document.getElementById('stat-total').innerHTML=`${totalKm} <span class="unit">km</span>`;
+  document.getElementById('stat-runs').textContent=activities.length;
+  document.getElementById('stat-avg').innerHTML=`${avg} <span class="unit">km</span>`;
+  document.getElementById('xp-total-val').innerHTML=`${xp.toLocaleString('fr-FR')} <span class="xp-unit">XP</span>`;
 
-  // Weekly quests
-  const weekEl = document.getElementById('weekly-quests');
-  weekEl.innerHTML = WEEKLY_QUESTS.map(q => {
-    const done = q.check(weekActs);
-    const prog = q.progress(weekActs);
-    const progLabel = done
-      ? 'Accomplie !'
-      : `${Math.round(prog*100)}%`;
-    return `
-      <div class="quest-card weekly ${done ? 'done' : ''}">
-        <div class="quest-icon">${q.icon}</div>
-        <div class="quest-body">
-          <div class="quest-name">${q.name}</div>
-          <div class="quest-desc">${q.desc} · ${progLabel}</div>
-          <div class="quest-mini-bar">
-            <div class="quest-mini-fill" style="width:${pct2str(prog)}"></div>
-          </div>
-        </div>
-        <div class="quest-reward">
-          <div class="quest-xp">+${q.xp} XP</div>
-          <div class="quest-check">✓</div>
-        </div>
+  document.getElementById('weekly-quests').innerHTML = WQ.map(q=>questCard(q,q.check(week),q.progress(week),true)).join('');
+  document.getElementById('milestone-quests').innerHTML = MQ.map(q=>questCard(q,q.check(activities),q.progress(activities))).join('');
+
+  document.getElementById('activity-list').innerHTML = activities.slice(0,10).map(a=>`
+    <div class="activity-row">
+      <div class="act-icon">${icon(a.type||a.sport_type)}</div>
+      <div class="act-body">
+        <div class="act-name">${a.name||label(a.type)}</div>
+        <div class="act-meta">${fdate(a.start_date)} · ${label(a.type)}</div>
       </div>
-    `;
-  }).join('');
+      <div class="act-km">${(a.distance/1000).toFixed(1)} km</div>
+      <div class="act-xp">+${Math.round((a.distance/1000)*10)} XP</div>
+    </div>`).join('');
 
-  // Milestone quests
-  const mileEl = document.getElementById('milestone-quests');
-  mileEl.innerHTML = MILESTONE_QUESTS.map(q => {
-    const done = q.check(activities);
-    const prog = q.progress(activities);
-    const progLabel = done ? 'Accomplie !' : `${Math.round(prog*100)}%`;
-    return `
-      <div class="quest-card ${done ? 'done' : ''}">
-        <div class="quest-icon">${q.icon}</div>
-        <div class="quest-body">
-          <div class="quest-name">${q.name}</div>
-          <div class="quest-desc">${q.desc} · ${progLabel}</div>
-          <div class="quest-mini-bar">
-            <div class="quest-mini-fill" style="width:${pct2str(prog)}"></div>
-          </div>
-        </div>
-        <div class="quest-reward">
-          <div class="quest-xp">+${q.xp} XP</div>
-          <div class="quest-check">✓</div>
-        </div>
-      </div>
-    `;
-  }).join('');
-
-  // Activities
-  const recent = activities.slice(0, 10);
-  document.getElementById('activity-list').innerHTML = recent.map(a => {
-    const km = (a.distance/1000).toFixed(1);
-    const xpGained = Math.round((a.distance/1000)*10);
-    return `
-      <div class="activity-row">
-        <div class="act-icon">${getActivityIcon(a.type || a.sport_type)}</div>
-        <div class="act-body">
-          <div class="act-name">${a.name || getTypeLabel(a.type)}</div>
-          <div class="act-meta">${formatDate(a.start_date)} · ${getTypeLabel(a.type)}</div>
-        </div>
-        <div class="act-km">${km} km</div>
-        <div class="act-xp">+${xpGained} XP</div>
-      </div>
-    `;
-  }).join('');
-
-  // Show game
-  document.getElementById('setup-screen').style.display = 'none';
-  document.getElementById('loading-screen').style.display = 'none';
-  document.getElementById('game-screen').style.display = 'block';
+  document.getElementById('setup-screen').style.display='none';
+  document.getElementById('loading-screen').style.display='none';
+  document.getElementById('game-screen').style.display='block';
 }
 
-// ═══════════════════════════════════════════
-// API
-// ═══════════════════════════════════════════
 async function fetchActivities(token) {
-  let all = [], page = 1;
-  while (true) {
-    const res = await fetch(
-      `https://www.strava.com/api/v3/athlete/activities?per_page=200&page=${page}`,
-      { headers: { Authorization: `Bearer ${token}` } }
-    );
-    if (!res.ok) {
-      const e = await res.json().catch(()=>({}));
-      throw new Error(e.message || `Erreur Strava (${res.status})`);
-    }
-    const batch = await res.json();
-    if (!batch.length) break;
-    const runs = batch.filter(a => VALID_TYPES.includes(a.type) || VALID_TYPES.includes(a.sport_type));
-    all = all.concat(runs);
-    if (batch.length < 200) break;
-    page++;
-    if (page > 10) break;
+  let all=[], page=1;
+  while(true) {
+    const r = await fetch(`https://www.strava.com/api/v3/athlete/activities?per_page=200&page=${page}`,
+      {headers:{Authorization:`Bearer ${token}`}});
+    if(!r.ok){const e=await r.json().catch(()=>({}));throw new Error(e.message||`Erreur Strava (${r.status})`);}
+    const batch=await r.json();
+    if(!batch.length) break;
+    all=all.concat(batch.filter(a=>VALID.includes(a.type)||VALID.includes(a.sport_type)));
+    if(batch.length<200) break;
+    page++; if(page>10) break;
   }
   return all;
 }
 
-async function connect() {
-  const token = document.getElementById('access-token').value.trim();
-  const errEl = document.getElementById('error-banner');
-  errEl.style.display = 'none';
-  if (!token) {
-    errEl.textContent = 'Renseigne ton access token Strava pour commencer.';
-    errEl.style.display = 'block';
-    return;
-  }
-  currentToken = token;
-  document.getElementById('setup-screen').style.display = 'none';
-  document.getElementById('loading-screen').style.display = 'flex';
-  try {
-    const acts = await fetchActivities(token);
-    renderGame(acts);
-  } catch(e) {
-    document.getElementById('loading-screen').style.display = 'none';
-    document.getElementById('setup-screen').style.display = 'flex';
-    errEl.textContent = e.message;
-    errEl.style.display = 'block';
-  }
+function setLoading(msg) {
+  document.getElementById('setup-screen').style.display='none';
+  document.getElementById('game-screen').style.display='none';
+  document.getElementById('loading-screen').style.display='flex';
+  document.getElementById('loading-text').textContent=msg||'Consultation des archives…';
+}
+
+function showError(msg) {
+  document.getElementById('loading-screen').style.display='none';
+  document.getElementById('setup-screen').style.display='flex';
+  const el=document.getElementById('error-banner');
+  el.textContent=msg; el.style.display='block';
 }
 
 async function refreshData() {
-  if (!currentToken) return;
-  document.getElementById('game-screen').style.display = 'none';
-  document.getElementById('loading-screen').style.display = 'flex';
-  try {
-    renderGame(await fetchActivities(currentToken));
-  } catch(e) {
-    document.getElementById('loading-screen').style.display = 'none';
-    document.getElementById('game-screen').style.display = 'block';
-  }
+  if(!currentToken) return;
+  setLoading('Synchronisation…');
+  try { renderGame(await fetchActivities(currentToken)); }
+  catch(e){ document.getElementById('loading-screen').style.display='none'; document.getElementById('game-screen').style.display='block'; }
 }
 
 function logout() {
-  currentToken = null;
-  document.getElementById('game-screen').style.display = 'none';
-  document.getElementById('setup-screen').style.display = 'flex';
+  currentToken=null;
+  document.getElementById('game-screen').style.display='none';
+  document.getElementById('setup-screen').style.display='flex';
+  document.getElementById('athlete-name').textContent='';
 }
 
 function loadDemo() {
-  const today = new Date();
-  const d = (n) => { const x = new Date(today); x.setDate(x.getDate()-n); return x.toISOString(); };
-  const demoActs = [
-    { name:"Sortie du matin", type:"Run", distance:9800, start_date:d(0) },
-    { name:"Trail des collines", type:"TrailRun", distance:18600, start_date:d(2) },
-    { name:"Foulée rapide", type:"Run", distance:5200, start_date:d(4) },
-    { name:"Tapis récup", type:"VirtualRun", distance:6000, start_date:d(5) },
-    { name:"Long run dominical", type:"Run", distance:22400, start_date:d(7) },
-    { name:"Tempo 10k", type:"Run", distance:10200, start_date:d(9) },
-    { name:"Fartlek forêt", type:"TrailRun", distance:14800, start_date:d(12) },
-    { name:"Sortie crépuscule", type:"Run", distance:8100, start_date:d(14) },
-    { name:"Marathon de Paris", type:"Run", distance:42195, start_date:d(20) },
-    { name:"Récup légère", type:"Run", distance:4500, start_date:d(21) },
-    { name:"Trail du sommet", type:"TrailRun", distance:25000, start_date:d(25) },
-    { name:"Intervalles", type:"Run", distance:11200, start_date:d(28) },
-    { name:"Jogging matin", type:"Run", distance:7300, start_date:d(30) },
-    { name:"Sortie tapis", type:"VirtualRun", distance:5000, start_date:d(33) },
-    { name:"Semi prépa", type:"Run", distance:19800, start_date:d(36) },
-    { name:"Trail nocturne", type:"TrailRun", distance:16400, start_date:d(40) },
-    { name:"Tempo court", type:"Run", distance:6800, start_date:d(42) },
-    { name:"Long run", type:"Run", distance:28000, start_date:d(47) },
-    { name:"Course en nature", type:"TrailRun", distance:20100, start_date:d(50) },
-    { name:"Séance piste", type:"Run", distance:8500, start_date:d(55) },
-    { name:"Jogging récup", type:"Run", distance:5500, start_date:d(58) },
-    { name:"Trail du lac", type:"TrailRun", distance:12300, start_date:d(62) },
-    { name:"10k test", type:"Run", distance:10000, start_date:d(65) },
-    { name:"Long run hiver", type:"Run", distance:30000, start_date:d(70) },
-    { name:"Semi-marathon", type:"Run", distance:21100, start_date:d(75) },
-  ];
-  renderGame(demoActs);
+  const t=new Date(), d=n=>{const x=new Date(t);x.setDate(x.getDate()-n);return x.toISOString();};
+  renderGame([
+    {name:"Sortie du matin",type:"Run",distance:9800,start_date:d(0)},
+    {name:"Trail des collines",type:"TrailRun",distance:18600,start_date:d(2)},
+    {name:"Foulée rapide",type:"Run",distance:5200,start_date:d(4)},
+    {name:"Tapis récup",type:"VirtualRun",distance:6000,start_date:d(5)},
+    {name:"Long run dominical",type:"Run",distance:22400,start_date:d(7)},
+    {name:"Tempo 10k",type:"Run",distance:10200,start_date:d(9)},
+    {name:"Marathon de Paris",type:"Run",distance:42195,start_date:d(20)},
+    {name:"Trail du sommet",type:"TrailRun",distance:25000,start_date:d(25)},
+    {name:"Semi prépa",type:"Run",distance:19800,start_date:d(36)},
+    {name:"Long run hiver",type:"Run",distance:28000,start_date:d(47)},
+    {name:"10k test",type:"Run",distance:10000,start_date:d(65)},
+  ]);
 }
+
+window.addEventListener('load', async()=>{
+  const params=new URLSearchParams(window.location.search);
+  if(params.get('code')) {
+    const ok=await handleOAuthCallback();
+    if(ok) {
+      setLoading('Chargement de tes aventures…');
+      try { renderGame(await fetchActivities(currentToken)); }
+      catch(e) { showError(e.message); }
+    }
+  }
+});
 </script>
 </body>
 </html>
