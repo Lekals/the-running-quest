@@ -555,7 +555,7 @@ function loadPrefs(){try{var a=localStorage.getItem('trq_av'),t=localStorage.get
 function updateDisplay(){
   var title=getCurrentTitle();
   var aidx=getCurrentAvatarIdx();
-  document.getElementById('level-title').textContent=title;
+  
   document.getElementById('badge-title').textContent=title;
   // pixel-label removed from hero display
   drawPixelChar('pixel-canvas',aidx);
@@ -679,7 +679,7 @@ function renderGame(activities){
   if(selectedTitleIdx!==null&&currentLevel<RANKS[selectedTitleIdx].minLv)selectedTitleIdx=null;
 
   document.getElementById('level-num').textContent=currentLevel;
-  document.getElementById('level-xp-label').textContent=xp.toLocaleString('fr-FR')+' XP accumulés';
+  
   document.getElementById('xp-current-km').textContent=totalKm+' km';
 
   if(currentLevel<200){
