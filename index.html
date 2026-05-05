@@ -723,27 +723,27 @@ function openRankModal() {
   document.getElementById('rank-modal').classList.add('open');
   const list = document.getElementById('rank-list');
   const currentLv = getLevel(currentTotalKm);
-  list.innerHTML = RANK_GROUPS.map((g, i) => {
-    const unlocked = currentLv >= g.minLv;
-    const isCurrent = currentLv >= g.minLv && currentLv <= g.maxLv;
-    const stateClass = isCurrent ? 'current' : unlocked ? 'unlocked' : 'locked';
-    const icon = isCurrent ? '⚔️' : unlocked ? '✓' : '🔒';
-    const kmNeeded = Math.round(g.minKm);
-    const canvasId = `rank-canvas-${i}`;
-    return `
-      <div class="rank-row ${stateClass}">
-        <canvas class="rank-row-pixel" id="${canvasId}" width="16" height="16"></canvas>
-        <div class="rank-row-info">
-          <div class="rank-row-name">${icon} ${g.title}</div>
-          <div class="rank-row-levels">${g.levels} · À partir de ${kmNeeded} km</div>
-        </div>
-        ${isCurrent ? '<div class="rank-current-badge">Ton rang</div>' : ''}
-        ${!unlocked ? `<div class="rank-row-km">${kmNeeded} km</div>` : ''}
-      </div>
-    \`;
+  list.innerHTML = RANK_GROUPS.map(function(g, i) {
+    var unlocked = currentLv >= g.minLv;
+    var isCurrent = currentLv >= g.minLv && currentLv <= g.maxLv;
+    var stateClass = isCurrent ? 'current' : unlocked ? 'unlocked' : 'locked';
+    var icon = isCurrent ? '⚔️' : unlocked ? '✓' : '🔒';
+    var kmNeeded = Math.round(g.minKm);
+    var canvasId = 'rank-canvas-' + i;
+    var currentBadge = isCurrent ? '<div class="rank-current-badge">Ton rang</div>' : '';
+    var kmBadge = !unlocked ? '<div class="rank-row-km">' + kmNeeded + ' km</div>' : '';
+    return '<div class="rank-row ' + stateClass + '">'
+      + '<canvas class="rank-row-pixel" id="' + canvasId + '" width="16" height="16"></canvas>'
+      + '<div class="rank-row-info">'
+      + '<div class="rank-row-name">' + icon + ' ' + g.title + '</div>'
+      + '<div class="rank-row-levels">' + g.levels + ' · À partir de ' + kmNeeded + ' km</div>'
+      + '</div>'
+      + currentBadge
+      + kmBadge
+      + '</div>';
   }).join('');
-  setTimeout(() => {
-    RANK_GROUPS.forEach((g, i) => { drawPixelChar(`rank-canvas-${i}`, g.charIdx); });
+  setTimeout(function() {
+    RANK_GROUPS.forEach(function(g, i) { drawPixelChar('rank-canvas-' + i, g.charIdx); });
   }, 0);
 }
 
