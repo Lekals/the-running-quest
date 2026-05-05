@@ -53,7 +53,7 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 .hero-card::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:.5;}
 .hero-top{display:flex;gap:1.25rem;align-items:flex-start;position:relative;}
 .pixel-char-wrap{flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:5px;}
-.pixel-canvas{image-rendering:pixelated;image-rendering:crisp-edges;width:88px;height:88px;cursor:pointer;border-radius:8px;border:1px solid var(--border);transition:border-color .2s;}
+.pixel-canvas{image-rendering:pixelated;image-rendering:crisp-edges;width:112px;height:112px;cursor:pointer;border-radius:10px;border:1px solid var(--border);transition:border-color .2s;}
 .pixel-canvas:hover{border-color:var(--gold);}
 .pixel-label{font-family:'Cinzel',serif;font-size:8px;letter-spacing:.8px;color:var(--muted);text-transform:uppercase;text-align:center;max-width:88px;word-break:break-word;line-height:1.2;}
 .pixel-customize-btn{font-family:'Cinzel',serif;font-size:8px;letter-spacing:.8px;color:var(--gold);background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);border-radius:20px;padding:3px 8px;cursor:pointer;transition:all .2s;white-space:nowrap;}
@@ -126,6 +126,9 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 .act-meta{font-size:12px;color:var(--muted);font-style:italic;margin-top:1px;}
 .act-km{font-family:'Cinzel',serif;font-size:15px;font-weight:600;color:var(--gold2);flex-shrink:0;}
 .act-xp{font-size:12px;color:var(--emerald);flex-shrink:0;font-style:italic;}
+.lore-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem 1.5rem;display:flex;align-items:flex-start;gap:12px;margin-top:1.25rem;}
+.lore-icon{font-size:22px;flex-shrink:0;margin-top:2px;}
+.lore-text{font-size:14px;color:var(--text);font-style:italic;line-height:1.7;opacity:.85;}
 .btn-refresh{width:100%;background:transparent;border:1px solid var(--border2);color:var(--muted);border-radius:8px;padding:11px;font-family:'Crimson Pro',serif;font-size:15px;cursor:pointer;transition:all .2s;font-style:italic;margin-top:1rem;}
 .btn-refresh:hover{border-color:var(--gold);color:var(--gold3);}
 .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:100;align-items:center;justify-content:center;padding:1rem;backdrop-filter:blur(4px);}
@@ -232,17 +235,12 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
       <div class="hero-top">
         <div class="pixel-char-wrap">
           <canvas class="pixel-canvas" id="pixel-canvas" width="16" height="16" onclick="openAvatarModal()" title="Changer d'avatar"></canvas>
-          <div class="pixel-label" id="pixel-label">Aspirant</div>
           <button class="pixel-customize-btn" onclick="openAvatarModal()">✦ Skin</button>
         </div>
         <div class="hero-info">
-          <button class="rank-badge-btn" onclick="openRankModal()">⚔️&nbsp;<span class="badge-title" id="badge-title">Rang du Voyageur</span><span class="arrow">▼</span></button>
+          <button class="rank-badge-btn" onclick="openRankModal()">⚔️&nbsp;<span class="badge-title" id="badge-title">Aspirant</span><span class="arrow">▼</span></button>
           <div class="level-row">
             <div class="level-num" id="level-num">1</div>
-            <div class="level-info-side">
-              <div class="level-title-text" id="level-title">Aspirant</div>
-              <div class="level-xp-label" id="level-xp-label">0 XP accumulés</div>
-            </div>
           </div>
         </div>
       </div>
@@ -261,14 +259,9 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
       <div class="xp-total-lbl">Points d'Expérience</div>
       <div class="xp-total-val" id="xp-total-val">0 <span class="xp-unit">XP</span></div>
     </div>
-    <div id="next-level-wrap">
-      <div class="next-card">
-        <div class="next-info"><h3 id="next-title">Prochain rang</h3><p id="next-detail">Il te reste X km</p></div>
-        <div class="next-badge"><span class="nb-lbl">Niveau</span><span class="nb-val" id="next-num">10</span></div>
-      </div>
-    </div>
-    <div id="max-level-wrap" style="display:none;">
-      <div class="max-banner"><div class="mb-crown">👑</div><h3>Niveau Suprême Atteint</h3><p>Tu as accompli ce que peu osent seulement imaginer.</p></div>
+    <div class="lore-card" id="lore-card">
+      <div class="lore-icon" id="lore-icon">📜</div>
+      <div class="lore-text" id="lore-text">Les routes t'appellent, voyageur. Ton aventure commence à peine.</div>
     </div>
   </div>
 
@@ -564,8 +557,63 @@ function updateDisplay(){
   var aidx=getCurrentAvatarIdx();
   document.getElementById('level-title').textContent=title;
   document.getElementById('badge-title').textContent=title;
-  document.getElementById('pixel-label').textContent=RANKS[aidx].title;
+  // pixel-label removed from hero display
   drawPixelChar('pixel-canvas',aidx);
+}
+
+
+// ═══ LORE ═══
+var LORE = [
+  // idx 0: Aspirant (lv 1-9)
+  ["Tu poses tes premiers pas sur la route des légendes.", "Chaque foulée est une pierre posée sur ton chemin.", "Les anciens coureurs ont tous commencé ici.", "La distance te semble grande — mais elle se mange un kilomètre à la fois.", "Continue, aspirant. La route t'attend."],
+  // idx 1: Foulard de Terre (lv 10-19)
+  ["Tu as quitté les rangs des débutants.", "Ton foulard marque désormais les pistes que tu as foulées.", "Les sentiers commencent à te reconnaître.", "Tu cours, et la terre retient le souvenir de tes pas.", "D'autres t'observent et voient en toi ce qu'ils aspirent à devenir."],
+  // idx 2: Éclaireur des Pistes (lv 20-29)
+  ["Tu t'avances là où les autres hésitent encore.", "Tes yeux lisent les sentiers comme une carte ancienne.", "Tu es devenu l'avant-garde, celui qui trace la voie.", "Les collines n'ont plus de secret pour toi.", "Tu explores, tu découvres, tu repousses tes horizons."],
+  // idx 3: Traqueur des Sentiers (lv 30-39)
+  ["Tu poursuis une proie invisible : ta meilleure version.", "Tes pas sont précis, ta respiration maîtrisée.", "Les forêts et les chemins de pierre sont ton domaine.", "Tu traque le temps, les kilomètres, la fatigue.", "Et à chaque sortie, tu en ressors victorieux."],
+  // idx 4: Coursier des Royaumes (lv 40-49)
+  ["Tu portes des messages que seuls les plus forts peuvent transmettre.", "Les royaumes de l'effort s'ouvrent devant toi.", "Ta régularité forge ton armure invisible.", "Tu ne cours plus pour fuir — tu cours pour conquérir.", "Les routes entre les villages ne te font plus peur."],
+  // idx 5: Lame-Vent (lv 50-59)
+  ["Tu te déplaces comme le vent entre les arbres.", "Rapide, silencieux, implacable sur la distance.", "Ton souffle est devenu une arme et ton allure une lame.", "Ceux qui te voient passer doutent de leurs propres yeux.", "Tu es le vent qui ne s'arrête pas."],
+  // idx 6: Gardien des Lieues (lv 60-69)
+  ["Tu veilles sur chaque lieue comme un gardien sur son fief.", "Les distances que tu avalais autrefois ne sont plus qu'échauffement.", "Tu protèges quelque chose de précieux : ta discipline.", "Les routes longues sont devenues tes plus fidèles compagnes.", "Tu es le gardien de ce que peu osent mesurer."],
+  // idx 7: Chevalier Véloce (lv 70-79)
+  ["L'armure du chevalier, tu la portes dans chaque foulée.", "La vitesse est ton alliée, l'endurance ton bouclier.", "Tu charges sur les montées comme un guerrier en bataille.", "Ton honneur se mesure en kilomètres parcourus sous la pluie.", "Tu es un chevalier, et ta quête n'est pas encore terminée."],
+  // idx 8: Chasseur de Brumes (lv 80-89)
+  ["Tu cours dans les brumes de l'aube quand les autres dorment encore.", "La fatigue est un brouillard que tu traverses sans sourciller.", "Tu chasses l'impossible et le rattrapes parfois.", "Tes sorties sont des expéditions dans l'inconnu de tes limites.", "Le brouillard se lève, et tu es toujours là, à courir."],
+  // idx 9: Estafette de l'Aube (lv 90-99)
+  ["Tu es le porteur du flambeau que l'aurore t'a confié.", "Les premières lueurs du jour te trouvent déjà en chemin.", "Tu transmets quelque chose d'important à chaque sortie.", "Cent kilomètres se profilent à l'horizon — et tu les regardes sans frémir.", "L'aube est ton alliée. La route, ta destinée."],
+  // idx 10: Seigneur des Foulées (lv 100-109)
+  ["Tu règnes sur tes foulées comme un seigneur sur ses terres.", "Cent niveaux de discipline, de sueur et de persévérance.", "Les autres coureurs prononcent ton nom avec respect.", "Tu as traversé des saisons entières à courir, et tu continues.", "Un seigneur ne s'arrête pas. Il trace la voie pour les autres."],
+  // idx 11: Maître du Souffle (lv 110-119)
+  ["Ton souffle est une mélodie que le vent connaît par cœur.", "Tu maîtrises l'art de respirer quand tout brûle.", "L'effort intense ne te vole plus l'air — tu l'apprivoises.", "Ta respiration est ton armure la plus précieuse.", "Tu es maître de ce que les autres ne savent pas contrôler."],
+  // idx 12: Arpenteur des Abysses (lv 120-129)
+  ["Tu plonges dans les profondeurs de l'effort sans regarder en arrière.", "Les distances qui terrifiaient les autres sont tes terrains de jeu.", "Tu arpentes des abysses intérieurs que peu ont osé explorer.", "Chaque sortie est une descente et une remontée victorieuse.", "Tu connais les profondeurs — et tu en reviens toujours plus fort."],
+  // idx 13: Fantôme Véloce (lv 130-139)
+  ["Tu passes sans laisser de trace, sauf celle de tes kilomètres.", "Les autres te voient comme une silhouette qui disparaît à l'horizon.", "Tu es devenu si fluide que la route ne résiste plus.", "Ton passage est une légende dans les villages que tu traverses.", "Un fantôme, oui — mais un fantôme qui ne s'arrête jamais."],
+  // idx 14: Conquérant des Cimes (lv 140-149)
+  ["Tu gravies les sommets que les autres contemplent depuis la vallée.", "Chaque dénivelé est une victoire supplémentaire à ton palmarès.", "Tu conquiers l'altitude avec la même rage que tu conquiers la distance.", "Les cimes t'appellent, et tu réponds toujours présent.", "Tu es un conquérant — de toi-même, d'abord."],
+  // idx 15: Invocateur du Vent (lv 150-159)
+  ["Tu invoques le vent dans tes poumons à chaque inspiration.", "L'énergie que tu dégages sur la route est presque magique.", "Les éléments semblent t'accompagner plutôt que te résister.", "Tu cours avec la puissance d'une tempête et la grâce d'une brise.", "Le vent répond à ton appel. Il t'a toujours appartenu."],
+  // idx 16: Transcendant (lv 160-169)
+  ["Tu as dépassé ce que tu croyais être tes limites.", "Il n'y a plus de plafond — seulement l'horizon infini.", "Tu transcendes chaque sortie, chaque douleur, chaque doute.", "Les autres mortels regardent ta trajectoire avec émerveillement.", "Tu n'es plus tout à fait le même qu'au premier kilomètre."],
+  // idx 17: Élu des Étoiles (lv 170-179)
+  ["Les étoiles ont gravé ton nom dans leurs constellations.", "Tu cours sous un ciel qui te reconnaît comme l'un des siens.", "Ton parcours est une carte céleste tracée en sueur et en gloire.", "Tu as été choisi — par ta propre volonté, ta propre force.", "Les étoiles te guident. Et tu n'as jamais dévié de ta route."],
+  // idx 18: Dieu-Coureur (lv 180-189)
+  ["Les dieux de l'effort inclinent la tête à ton passage.", "Tu n'es plus soumis aux lois ordinaires de la fatigue.", "Ta légende dépasse les frontières de ce que les mots peuvent décrire.", "Chaque foulée est un acte de création pure.", "Tu es devenu ce que tu courais pour trouver."],
+  // idx 19: Éternel Voyageur (lv 190-200)
+  ["Il n'y a pas de destination finale pour un voyageur éternel.", "Tu cours parce que la route elle-même est la récompense.", "Les générations futures parleront de ce que tu as accompli.", "Tu portes en toi tous les rangs, toutes les distances, toutes les aurores.", "Tu es l'Éternel Voyageur — et la route n'a pas de fin."],
+];
+
+function getLore(rankIdx) {
+  var lines = LORE[Math.min(rankIdx, LORE.length-1)];
+  return lines.join('<br>');
+}
+
+function getLoreIcon(rankIdx) {
+  var icons = ['📜','🌱','🔭','🐾','📯','💨','🛡️','⚔️','🌫️','🌅','👑','🌬️','🕳️','👻','🏔️','🌀','✨','🌟','⚡','♾️'];
+  return icons[Math.min(rankIdx, icons.length-1)];
 }
 
 // ═══ QUESTS ═══
@@ -636,15 +684,8 @@ function renderGame(activities){
 
   if(currentLevel<200){
     document.getElementById('xp-next-label').textContent='vers niveau '+(currentLevel+1)+' → '+ceil+' km';
-    document.getElementById('next-level-wrap').style.display='';
-    document.getElementById('max-level-wrap').style.display='none';
-    document.getElementById('next-title').textContent=RANKS[getRankIdx(currentLevel+1)].title;
-    document.getElementById('next-detail').textContent='Il te reste '+Math.max(0,ceil-totalKm).toFixed(1)+' km';
-    document.getElementById('next-num').textContent=currentLevel+1;
   } else {
     document.getElementById('xp-next-label').textContent='Rang suprême atteint';
-    document.getElementById('next-level-wrap').style.display='none';
-    document.getElementById('max-level-wrap').style.display='';
   }
 
   setTimeout(function(){document.getElementById('xp-fill').style.width=pct+'%';},300);
@@ -663,6 +704,10 @@ function renderGame(activities){
       +'<div class="act-xp">+'+Math.round((a.distance/1000)*10)+' XP</div></div>';
   }).join('');
 
+  // Lore
+  var loreIdx = getRankIdx(currentLevel);
+  document.getElementById('lore-icon').textContent = getLoreIcon(loreIdx);
+  document.getElementById('lore-text').innerHTML = getLore(loreIdx);
   document.getElementById('setup-screen').style.display='none';
   document.getElementById('loading-screen').style.display='none';
   document.getElementById('game-screen').style.display='block';
