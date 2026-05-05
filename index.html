@@ -36,7 +36,6 @@ body::before {
     radial-gradient(1px 1px at 30% 60%, rgba(255,255,255,0.2) 0%, transparent 100%),
     radial-gradient(1px 1px at 50% 15%, rgba(255,255,255,0.3) 0%, transparent 100%),
     radial-gradient(1px 1px at 70% 80%, rgba(255,255,255,0.15) 0%, transparent 100%),
-    radial-gradient(1px 1px at 85% 35%, rgba(255,255,255,0.25) 0%, transparent 100%),
     radial-gradient(2px 2px at 15% 50%, rgba(201,168,76,0.2) 0%, transparent 100%),
     radial-gradient(2px 2px at 75% 25%, rgba(96,165,250,0.15) 0%, transparent 100%);
   pointer-events: none; z-index: 0;
@@ -50,11 +49,7 @@ body::before {
   min-height: 100vh; padding: 2rem 1.5rem;
 }
 .crest { text-align: center; margin-bottom: 2.5rem; }
-.crest-icon {
-  font-size: 52px; line-height: 1; margin-bottom: 0.75rem;
-  filter: drop-shadow(0 0 20px rgba(201,168,76,0.4));
-  animation: float 4s ease-in-out infinite;
-}
+.crest-icon { font-size: 52px; line-height: 1; margin-bottom: 0.75rem; filter: drop-shadow(0 0 20px rgba(201,168,76,0.4)); animation: float 4s ease-in-out infinite; }
 @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
 .crest-title {
   font-family: 'Cinzel', serif; font-size: 38px; font-weight: 900; letter-spacing: 3px;
@@ -62,10 +57,7 @@ body::before {
   -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
   line-height: 1; margin-bottom: 6px;
 }
-.crest-subtitle {
-  font-family: 'Cinzel', serif; font-size: 11px;
-  letter-spacing: 5px; color: var(--gold); opacity: 0.6; text-transform: uppercase;
-}
+.crest-subtitle { font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 5px; color: var(--gold); opacity: 0.6; text-transform: uppercase; }
 .panel {
   background: var(--surface); border: 1px solid var(--border2);
   border-radius: 16px; padding: 2rem; width: 100%; max-width: 420px; position: relative;
@@ -75,183 +67,158 @@ body::before {
   background: linear-gradient(135deg, rgba(201,168,76,0.2), transparent 40%, transparent 60%, rgba(201,168,76,0.1));
   pointer-events: none;
 }
-.panel-title {
-  font-family: 'Cinzel', serif; font-size: 14px; letter-spacing: 2px;
-  color: var(--gold); text-align: center; margin-bottom: 1.75rem; text-transform: uppercase;
-}
+.panel-title { font-family: 'Cinzel', serif; font-size: 14px; letter-spacing: 2px; color: var(--gold); text-align: center; margin-bottom: 1.75rem; text-transform: uppercase; }
 .btn-oauth {
-  width: 100%;
-  background: linear-gradient(135deg, #7a5f20, var(--gold) 50%, #7a5f20);
+  width: 100%; background: linear-gradient(135deg, #7a5f20, var(--gold) 50%, #7a5f20);
   color: var(--bg); border: none; border-radius: 8px; padding: 16px;
-  font-family: 'Cinzel', serif; font-size: 15px; font-weight: 600;
-  letter-spacing: 2px; cursor: pointer; transition: opacity 0.2s, transform 0.1s;
-  text-transform: uppercase; display: flex; align-items: center; justify-content: center; gap: 10px;
+  font-family: 'Cinzel', serif; font-size: 15px; font-weight: 600; letter-spacing: 2px;
+  cursor: pointer; transition: opacity 0.2s, transform 0.1s; text-transform: uppercase;
+  display: flex; align-items: center; justify-content: center; gap: 10px;
 }
 .btn-oauth:hover { opacity: 0.9; }
 .btn-oauth:active { transform: scale(0.98); }
-.oauth-hint {
-  font-size: 13px; color: var(--muted); text-align: center;
-  margin-top: 1rem; font-style: italic; line-height: 1.6;
-}
-.separator {
-  display: flex; align-items: center; gap: 12px; margin: 1.5rem 0;
-}
+.oauth-hint { font-size: 13px; color: var(--muted); text-align: center; margin-top: 1rem; font-style: italic; line-height: 1.6; }
+.separator { display: flex; align-items: center; gap: 12px; margin: 1.5rem 0; }
 .separator::before, .separator::after { content: ''; flex: 1; height: 1px; background: var(--border); }
 .separator span { font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: 2px; color: var(--muted); }
-.btn-demo {
-  width: 100%; background: transparent; border: 1px solid var(--border2);
-  color: var(--muted); border-radius: 8px; padding: 11px;
-  font-family: 'Crimson Pro', serif; font-size: 15px; cursor: pointer;
-  transition: all 0.2s; font-style: italic;
-}
+.btn-demo { width: 100%; background: transparent; border: 1px solid var(--border2); color: var(--muted); border-radius: 8px; padding: 11px; font-family: 'Crimson Pro', serif; font-size: 15px; cursor: pointer; transition: all 0.2s; font-style: italic; }
 .btn-demo:hover { border-color: var(--gold); color: var(--gold3); }
-.error-banner {
-  display: none; background: var(--ruby2); border: 1px solid rgba(248,113,113,0.3);
-  border-radius: 8px; padding: 10px 14px; font-size: 14px; color: var(--ruby);
-  margin-bottom: 1rem; font-style: italic;
-}
+.error-banner { display: none; background: var(--ruby2); border: 1px solid rgba(248,113,113,0.3); border-radius: 8px; padding: 10px 14px; font-size: 14px; color: var(--ruby); margin-bottom: 1rem; font-style: italic; }
 
 /* ═══ LOADING ═══ */
-#loading-screen {
-  display: none; position: relative; z-index: 1;
-  flex-direction: column; align-items: center; justify-content: center;
-  min-height: 100vh; gap: 1.5rem;
-}
-.rune-spinner {
-  width: 60px; height: 60px; border: 2px solid rgba(201,168,76,0.1);
-  border-top-color: var(--gold); border-radius: 50%;
-  animation: spin 1s linear infinite; position: relative;
-}
-.rune-spinner::after {
-  content: '⟡'; position: absolute; inset: 0;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 20px; color: var(--gold); animation: spin 2s linear infinite reverse;
-}
+#loading-screen { display: none; position: relative; z-index: 1; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; gap: 1.5rem; }
+.rune-spinner { width: 60px; height: 60px; border: 2px solid rgba(201,168,76,0.1); border-top-color: var(--gold); border-radius: 50%; animation: spin 1s linear infinite; position: relative; }
+.rune-spinner::after { content: '⟡'; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 20px; color: var(--gold); animation: spin 2s linear infinite reverse; }
 @keyframes spin { to { transform: rotate(360deg); } }
-.loading-text {
-  font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: 3px;
-  color: var(--gold); opacity: 0.7; text-transform: uppercase;
-  animation: pulse 2s ease-in-out infinite;
-}
+.loading-text { font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: 3px; color: var(--gold); opacity: 0.7; text-transform: uppercase; animation: pulse 2s ease-in-out infinite; }
 @keyframes pulse { 0%,100%{opacity:0.4} 50%{opacity:0.9} }
 
 /* ═══ GAME ═══ */
-#game-screen {
-  display: none; position: relative; z-index: 1;
-  max-width: 680px; margin: 0 auto; padding: 2rem 1.5rem 4rem;
-}
-.topbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.5rem; }
-.topbar-logo {
-  font-family: 'Cinzel', serif; font-size: 18px; font-weight: 900; letter-spacing: 2px;
-  background: linear-gradient(135deg, var(--gold2), var(--gold));
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-}
-.topbar-athlete { font-size: 14px; color: var(--muted); font-style: italic; }
+#game-screen { display: none; position: relative; z-index: 1; max-width: 680px; margin: 0 auto; padding: 1.5rem 1.5rem 5rem; }
+
+.topbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
+.topbar-logo { font-family: 'Cinzel', serif; font-size: 18px; font-weight: 900; letter-spacing: 2px; background: linear-gradient(135deg, var(--gold2), var(--gold)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 .topbar-actions { display: flex; gap: 8px; align-items: center; }
-.btn-sm {
-  background: transparent; border: 1px solid var(--border2); color: var(--muted);
-  border-radius: 6px; padding: 6px 12px; font-family: 'Crimson Pro', serif;
-  font-size: 13px; cursor: pointer; transition: all 0.2s;
-}
+.topbar-athlete { font-size: 13px; color: var(--muted); font-style: italic; }
+.btn-sm { background: transparent; border: 1px solid var(--border2); color: var(--muted); border-radius: 6px; padding: 6px 12px; font-family: 'Crimson Pro', serif; font-size: 13px; cursor: pointer; transition: all 0.2s; }
 .btn-sm:hover { border-color: var(--gold); color: var(--gold3); }
 
+/* ═══ TABS ═══ */
+.tabs { display: flex; gap: 4px; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 4px; margin-bottom: 1.5rem; }
+.tab-btn {
+  flex: 1; background: transparent; border: none; border-radius: 9px;
+  padding: 10px 6px; font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: 1px;
+  color: var(--muted); cursor: pointer; transition: all 0.2s; text-transform: uppercase;
+  display: flex; flex-direction: column; align-items: center; gap: 4px;
+}
+.tab-btn .tab-icon { font-size: 16px; }
+.tab-btn.active { background: rgba(201,168,76,0.1); color: var(--gold2); border: 1px solid rgba(201,168,76,0.2); }
+.tab-btn:hover:not(.active) { color: var(--text); }
+
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+
+/* ═══ PERSONNAGE TAB ═══ */
 .hero-card {
-  position: relative; border-radius: 20px; padding: 2rem; margin-bottom: 1.25rem;
+  position: relative; border-radius: 20px; padding: 1.5rem; margin-bottom: 1.25rem;
   overflow: hidden; border: 1px solid rgba(201,168,76,0.25); background: var(--surface);
 }
-.hero-card::before {
-  content: ''; position: absolute; inset: 0;
-  background: radial-gradient(ellipse at 80% 0%, rgba(201,168,76,0.08) 0%, transparent 60%),
-              radial-gradient(ellipse at 0% 100%, rgba(96,165,250,0.05) 0%, transparent 50%);
-}
-.hero-card::after {
-  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent); opacity: 0.5;
-}
-.rank-badge {
+.hero-card::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 80% 0%, rgba(201,168,76,0.08) 0%, transparent 60%), radial-gradient(ellipse at 0% 100%, rgba(96,165,250,0.05) 0%, transparent 50%); }
+.hero-card::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); opacity: 0.5; }
+
+.hero-top { display: flex; gap: 1.5rem; align-items: flex-start; position: relative; }
+
+/* ═══ PIXEL CHARACTER ═══ */
+.pixel-char-wrap { flex-shrink: 0; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.pixel-canvas { image-rendering: pixelated; image-rendering: crisp-edges; width: 80px; height: 80px; }
+.pixel-label { font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 1px; color: var(--muted); text-transform: uppercase; text-align: center; }
+
+.hero-info { flex: 1; }
+.rank-badge-btn {
   display: inline-flex; align-items: center; gap: 6px;
   background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.25);
   border-radius: 20px; padding: 4px 14px 4px 10px;
   font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 1.5px;
-  color: var(--gold2); margin-bottom: 1.25rem; position: relative;
+  color: var(--gold2); margin-bottom: 0.75rem; cursor: pointer;
+  transition: all 0.2s;
 }
-.hero-level { position: relative; display: flex; align-items: flex-end; gap: 16px; margin-bottom: 0.5rem; }
-.level-num {
-  font-family: 'Cinzel', serif; font-size: 80px; font-weight: 900;
-  line-height: 1; letter-spacing: -4px;
-  background: linear-gradient(180deg, #fff 0%, var(--gold3) 40%, var(--gold) 100%);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-}
-.level-info { padding-bottom: 12px; }
-.level-title-text { font-family: 'Cinzel', serif; font-size: 22px; font-weight: 600; color: var(--gold3); letter-spacing: 1px; margin-bottom: 4px; }
-.level-xp-label { font-size: 14px; color: var(--muted); font-style: italic; }
-.xp-track {
-  position: relative; background: rgba(0,0,0,0.4); border: 1px solid var(--border);
-  border-radius: 100px; height: 10px; margin: 1.25rem 0 8px; overflow: hidden;
-}
-.xp-fill {
-  height: 100%; border-radius: 100px;
-  background: linear-gradient(90deg, #7a5f20, var(--gold2), #f5e4b0);
-  transition: width 1.2s cubic-bezier(0.4,0,0.2,1); position: relative;
-}
-.xp-fill::after {
-  content: ''; position: absolute; right: 0; top: 0; bottom: 0; width: 30px;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3));
-  border-radius: 100px; animation: shimmer 2s ease-in-out infinite;
-}
+.rank-badge-btn:hover { background: rgba(201,168,76,0.15); border-color: rgba(201,168,76,0.5); }
+.rank-badge-btn .arrow { font-size: 10px; opacity: 0.6; margin-left: 4px; }
+
+.level-row { display: flex; align-items: flex-end; gap: 10px; margin-bottom: 4px; }
+.level-num { font-family: 'Cinzel', serif; font-size: 64px; font-weight: 900; line-height: 1; letter-spacing: -3px; background: linear-gradient(180deg, #fff 0%, var(--gold3) 40%, var(--gold) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.level-info-side { padding-bottom: 8px; }
+.level-title-text { font-family: 'Cinzel', serif; font-size: 18px; font-weight: 600; color: var(--gold3); letter-spacing: 1px; margin-bottom: 2px; }
+.level-xp-label { font-size: 13px; color: var(--muted); font-style: italic; }
+
+.xp-track { position: relative; background: rgba(0,0,0,0.4); border: 1px solid var(--border); border-radius: 100px; height: 10px; margin: 1rem 0 8px; overflow: hidden; }
+.xp-fill { height: 100%; border-radius: 100px; background: linear-gradient(90deg, #7a5f20, var(--gold2), #f5e4b0); transition: width 1.2s cubic-bezier(0.4,0,0.2,1); position: relative; }
+.xp-fill::after { content: ''; position: absolute; right: 0; top: 0; bottom: 0; width: 30px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3)); border-radius: 100px; animation: shimmer 2s ease-in-out infinite; }
 @keyframes shimmer { 0%,100%{opacity:0} 50%{opacity:1} }
 .xp-row { display: flex; justify-content: space-between; font-size: 13px; }
 .xp-row .xp-current { font-weight: 600; color: var(--gold2); }
 .xp-row .xp-next { color: var(--muted); font-style: italic; }
 
 .stats-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin-bottom: 1.25rem; }
-.stat-gem {
-  background: var(--surface); border: 1px solid var(--border);
-  border-radius: var(--radius); padding: 1rem; text-align: center;
-  position: relative; overflow: hidden; transition: border-color 0.2s;
-}
+.stat-gem { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; text-align: center; transition: border-color 0.2s; }
 .stat-gem:hover { border-color: var(--border2); }
-.stat-gem::before {
-  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
-  opacity: 0; transition: opacity 0.2s;
-}
-.stat-gem:hover::before { opacity: 0.5; }
-.stat-val { font-family: 'Cinzel', serif; font-size: 26px; font-weight: 600; color: #fff; line-height: 1; margin-bottom: 4px; }
-.stat-val .unit { font-size: 14px; font-weight: 400; color: var(--muted); }
+.stat-val { font-family: 'Cinzel', serif; font-size: 24px; font-weight: 600; color: #fff; line-height: 1; margin-bottom: 4px; }
+.stat-val .unit { font-size: 13px; font-weight: 400; color: var(--muted); }
 .stat-lbl { font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 1.5px; color: var(--muted); text-transform: uppercase; }
 
-.xp-total-card {
-  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
-  padding: 1rem 1.5rem; display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem;
-}
+.xp-total-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem 1.5rem; display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; }
 .xp-total-lbl { font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 2px; color: var(--muted); text-transform: uppercase; }
 .xp-total-val { font-family: 'Cinzel', serif; font-size: 22px; font-weight: 600; color: var(--gold2); }
 .xp-total-val .xp-unit { font-size: 13px; color: var(--muted); font-weight: 400; margin-left: 4px; }
 
-.section-hdr {
-  font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 3px; color: var(--gold);
-  text-transform: uppercase; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; opacity: 0.8;
-}
-.section-hdr::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+.next-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem 1.5rem; display: flex; justify-content: space-between; align-items: center; }
+.next-info h3 { font-family: 'Cinzel', serif; font-size: 15px; color: var(--text); margin-bottom: 4px; }
+.next-info p { font-size: 13px; color: var(--muted); font-style: italic; }
+.next-badge { background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.2); border-radius: 10px; padding: 10px 16px; text-align: center; }
+.next-badge .nb-lbl { font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 2px; color: var(--gold); opacity: 0.7; display: block; }
+.next-badge .nb-val { font-family: 'Cinzel', serif; font-size: 24px; font-weight: 900; color: var(--gold3); }
 
+.max-banner { background: linear-gradient(135deg, rgba(201,168,76,0.08), rgba(192,132,252,0.08)); border: 1px solid rgba(201,168,76,0.25); border-radius: var(--radius); padding: 1.5rem; text-align: center; }
+.max-banner .mb-crown { font-size: 36px; margin-bottom: 8px; }
+.max-banner h3 { font-family: 'Cinzel', serif; font-size: 18px; color: var(--gold2); margin-bottom: 4px; }
+.max-banner p { font-size: 14px; color: var(--muted); font-style: italic; }
+
+/* ═══ RANK EVOLUTION MODAL ═══ */
+.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 100; align-items: center; justify-content: center; padding: 1rem; backdrop-filter: blur(4px); }
+.modal-overlay.open { display: flex; }
+.modal { background: var(--surface); border: 1px solid var(--border2); border-radius: 20px; width: 100%; max-width: 500px; max-height: 85vh; overflow-y: auto; padding: 1.5rem; position: relative; }
+.modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
+.modal-title { font-family: 'Cinzel', serif; font-size: 16px; font-weight: 600; color: var(--gold2); letter-spacing: 1px; }
+.modal-close { background: transparent; border: 1px solid var(--border2); color: var(--muted); border-radius: 6px; width: 30px; height: 30px; cursor: pointer; font-size: 16px; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
+.modal-close:hover { border-color: var(--gold); color: var(--gold); }
+
+.rank-list { display: flex; flex-direction: column; gap: 8px; }
+.rank-row {
+  background: rgba(0,0,0,0.2); border: 1px solid var(--border); border-radius: 10px;
+  padding: 12px 16px; display: flex; align-items: center; gap: 14px; transition: all 0.2s;
+}
+.rank-row.current { border-color: rgba(201,168,76,0.4); background: rgba(201,168,76,0.06); }
+.rank-row.unlocked { border-color: rgba(45,212,160,0.2); }
+.rank-row.locked { opacity: 0.4; }
+.rank-row-pixel { width: 40px; height: 40px; image-rendering: pixelated; flex-shrink: 0; }
+.rank-row-info { flex: 1; }
+.rank-row-name { font-family: 'Cinzel', serif; font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 2px; }
+.rank-row.current .rank-row-name { color: var(--gold2); }
+.rank-row.unlocked .rank-row-name { color: var(--emerald); }
+.rank-row-levels { font-size: 12px; color: var(--muted); font-style: italic; }
+.rank-row-km { font-family: 'Cinzel', serif; font-size: 13px; color: var(--muted); flex-shrink: 0; }
+.rank-row.current .rank-row-km { color: var(--gold); }
+.rank-row.unlocked .rank-row-km { color: var(--emerald); }
+.rank-current-badge { font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 1px; background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.3); color: var(--gold); border-radius: 20px; padding: 2px 8px; flex-shrink: 0; }
+
+/* ═══ QUESTS ═══ */
+.section-hdr { font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; opacity: 0.8; }
+.section-hdr::after { content: ''; flex: 1; height: 1px; background: var(--border); }
 .quest-grid { display: flex; flex-direction: column; gap: 8px; margin-bottom: 1.5rem; }
-.quest-card {
-  background: var(--surface); border: 1px solid var(--border);
-  border-radius: var(--radius); padding: 1rem 1.25rem;
-  display: flex; align-items: center; gap: 14px;
-  transition: border-color 0.2s; position: relative; overflow: hidden;
-}
+.quest-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem 1.25rem; display: flex; align-items: center; gap: 14px; transition: border-color 0.2s; position: relative; overflow: hidden; }
 .quest-card.done { border-color: rgba(45,212,160,0.25); background: rgba(45,212,160,0.04); }
-.quest-card.done::before {
-  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
-  background: linear-gradient(90deg, transparent, var(--emerald), transparent); opacity: 0.5;
-}
-.quest-icon {
-  width: 40px; height: 40px; border-radius: 10px;
-  display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0;
-  background: rgba(201,168,76,0.08); border: 1px solid var(--border);
-}
+.quest-card.done::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--emerald), transparent); opacity: 0.5; }
+.quest-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; background: rgba(201,168,76,0.08); border: 1px solid var(--border); }
 .quest-card.done .quest-icon { background: rgba(45,212,160,0.1); border-color: rgba(45,212,160,0.3); }
 .quest-body { flex: 1; min-width: 0; }
 .quest-name { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 2px; }
@@ -271,49 +238,18 @@ body::before {
 .quest-card.weekly .quest-xp { color: var(--sapphire); }
 .quest-card.weekly.done { border-color: rgba(45,212,160,0.25); }
 
-.activity-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 2rem; }
-.activity-row {
-  background: var(--surface); border: 1px solid var(--border);
-  border-radius: var(--radius); padding: 12px 16px;
-  display: flex; align-items: center; gap: 12px; transition: border-color 0.2s;
-}
+/* ═══ ACTIVITIES ═══ */
+.activity-list { display: flex; flex-direction: column; gap: 8px; }
+.activity-row { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 12px 16px; display: flex; align-items: center; gap: 12px; transition: border-color 0.2s; }
 .activity-row:hover { border-color: var(--border2); }
-.act-icon {
-  width: 36px; height: 36px; background: rgba(201,168,76,0.06);
-  border: 1px solid var(--border); border-radius: 8px;
-  display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0;
-}
+.act-icon { width: 36px; height: 36px; background: rgba(201,168,76,0.06); border: 1px solid var(--border); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
 .act-body { flex: 1; min-width: 0; }
 .act-name { font-size: 15px; font-weight: 600; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .act-meta { font-size: 12px; color: var(--muted); font-style: italic; margin-top: 1px; }
 .act-km { font-family: 'Cinzel', serif; font-size: 15px; font-weight: 600; color: var(--gold2); flex-shrink: 0; }
 .act-xp { font-size: 12px; color: var(--emerald); flex-shrink: 0; font-style: italic; }
 
-.next-card {
-  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
-  padding: 1.25rem 1.5rem; display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;
-}
-.next-info h3 { font-family: 'Cinzel', serif; font-size: 15px; color: var(--text); margin-bottom: 4px; }
-.next-info p { font-size: 13px; color: var(--muted); font-style: italic; }
-.next-badge {
-  background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.2);
-  border-radius: 10px; padding: 10px 16px; text-align: center;
-}
-.next-badge .nb-lbl { font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 2px; color: var(--gold); opacity: 0.7; display: block; }
-.next-badge .nb-val { font-family: 'Cinzel', serif; font-size: 24px; font-weight: 900; color: var(--gold3); }
-.max-banner {
-  background: linear-gradient(135deg, rgba(201,168,76,0.08), rgba(192,132,252,0.08));
-  border: 1px solid rgba(201,168,76,0.25); border-radius: var(--radius);
-  padding: 1.5rem; text-align: center; margin-bottom: 1.5rem;
-}
-.max-banner .mb-crown { font-size: 36px; margin-bottom: 8px; }
-.max-banner h3 { font-family: 'Cinzel', serif; font-size: 18px; color: var(--gold2); margin-bottom: 4px; }
-.max-banner p { font-size: 14px; color: var(--muted); font-style: italic; }
-.btn-refresh {
-  width: 100%; background: transparent; border: 1px solid var(--border2); color: var(--muted);
-  border-radius: 8px; padding: 11px; font-family: 'Crimson Pro', serif; font-size: 15px;
-  cursor: pointer; transition: all 0.2s; font-style: italic;
-}
+.btn-refresh { width: 100%; background: transparent; border: 1px solid var(--border2); color: var(--muted); border-radius: 8px; padding: 11px; font-family: 'Crimson Pro', serif; font-size: 15px; cursor: pointer; transition: all 0.2s; font-style: italic; margin-top: 1rem; }
 .btn-refresh:hover { border-color: var(--gold); color: var(--gold3); }
 </style>
 </head>
@@ -329,12 +265,8 @@ body::before {
   <div class="panel">
     <div class="panel-title">Commencer l'aventure</div>
     <div id="error-banner" class="error-banner"></div>
-    <button class="btn-oauth" onclick="startOAuth()">
-      🏃&nbsp;&nbsp;Se connecter avec Strava
-    </button>
-    <div class="oauth-hint">
-      Connexion sécurisée · Tes données restent privées
-    </div>
+    <button class="btn-oauth" onclick="startOAuth()">🏃&nbsp;&nbsp;Se connecter avec Strava</button>
+    <div class="oauth-hint">Connexion sécurisée · Tes données restent privées</div>
     <div class="separator"><span>ou</span></div>
     <button class="btn-demo" onclick="loadDemo()">✦ Essayer avec des données de démo</button>
   </div>
@@ -346,152 +278,501 @@ body::before {
   <div class="loading-text" id="loading-text">Consultation des archives…</div>
 </div>
 
+<!-- ═══ RANK MODAL ═══ -->
+<div class="modal-overlay" id="rank-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title">⚔️ Évolution des Rangs</div>
+      <button class="modal-close" onclick="closeRankModal()">✕</button>
+    </div>
+    <div class="rank-list" id="rank-list"></div>
+  </div>
+</div>
+
 <!-- ═══ GAME ═══ -->
 <div id="game-screen">
   <div class="topbar">
     <div class="topbar-logo">The Running Quest</div>
     <div class="topbar-actions">
       <span class="topbar-athlete" id="athlete-name"></span>
-      <button class="btn-sm" onclick="refreshData()">↻ Sync</button>
+      <button class="btn-sm" onclick="refreshData()">↻</button>
       <button class="btn-sm" onclick="logout()">← Quitter</button>
     </div>
   </div>
 
-  <div class="hero-card">
-    <div class="rank-badge">⚔️ &nbsp;Rang du Voyageur</div>
-    <div class="hero-level">
-      <div class="level-num" id="level-num">1</div>
-      <div class="level-info">
-        <div class="level-title-text" id="level-title">Novice</div>
-        <div class="level-xp-label" id="level-xp-label">0 XP accumulés</div>
+  <!-- TABS -->
+  <div class="tabs">
+    <button class="tab-btn active" onclick="switchTab('personnage')" id="tab-personnage">
+      <span class="tab-icon">🧙</span>Personnage
+    </button>
+    <button class="tab-btn" onclick="switchTab('hebdo')" id="tab-hebdo">
+      <span class="tab-icon">📅</span>Quêtes Hebdo
+    </button>
+    <button class="tab-btn" onclick="switchTab('hauts')" id="tab-hauts">
+      <span class="tab-icon">🏆</span>Hauts Faits
+    </button>
+    <button class="tab-btn" onclick="switchTab('activites')" id="tab-activites">
+      <span class="tab-icon">🏃</span>Activités
+    </button>
+  </div>
+
+  <!-- TAB: PERSONNAGE -->
+  <div class="tab-content active" id="content-personnage">
+    <div class="hero-card">
+      <div class="hero-top">
+        <div class="pixel-char-wrap">
+          <canvas class="pixel-canvas" id="pixel-canvas" width="16" height="16"></canvas>
+          <div class="pixel-label" id="pixel-label">Novice</div>
+        </div>
+        <div class="hero-info">
+          <button class="rank-badge-btn" onclick="openRankModal()">
+            ⚔️ &nbsp;Rang du Voyageur<span class="arrow">▼</span>
+          </button>
+          <div class="level-row">
+            <div class="level-num" id="level-num">1</div>
+            <div class="level-info-side">
+              <div class="level-title-text" id="level-title">Novice</div>
+              <div class="level-xp-label" id="level-xp-label">0 XP accumulés</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="xp-track"><div class="xp-fill" id="xp-fill" style="width:0%"></div></div>
+      <div class="xp-row">
+        <span class="xp-current" id="xp-current-km">0 km</span>
+        <span class="xp-next" id="xp-next-label">vers le niveau 2</span>
       </div>
     </div>
-    <div class="xp-track"><div class="xp-fill" id="xp-fill" style="width:0%"></div></div>
-    <div class="xp-row">
-      <span class="xp-current" id="xp-current-km">0 km</span>
-      <span class="xp-next" id="xp-next-label">vers le niveau 2</span>
-    </div>
-  </div>
 
-  <div class="stats-row">
-    <div class="stat-gem">
-      <div class="stat-val" id="stat-total">0 <span class="unit">km</span></div>
-      <div class="stat-lbl">Total</div>
-    </div>
-    <div class="stat-gem">
-      <div class="stat-val" id="stat-runs">0</div>
-      <div class="stat-lbl">Sorties</div>
-    </div>
-    <div class="stat-gem">
-      <div class="stat-val" id="stat-avg">0 <span class="unit">km</span></div>
-      <div class="stat-lbl">Moy./sortie</div>
-    </div>
-  </div>
-
-  <div class="xp-total-card">
-    <div class="xp-total-lbl">Points d'Expérience</div>
-    <div class="xp-total-val" id="xp-total-val">0 <span class="xp-unit">XP</span></div>
-  </div>
-
-  <div class="section-hdr">Quêtes hebdomadaires</div>
-  <div class="quest-grid" id="weekly-quests"></div>
-
-  <div class="section-hdr">Hauts Faits</div>
-  <div class="quest-grid" id="milestone-quests"></div>
-
-  <div id="next-level-wrap">
-    <div class="next-card">
-      <div class="next-info">
-        <h3 id="next-title">Prochain rang</h3>
-        <p id="next-detail">Il te reste X km</p>
+    <div class="stats-row">
+      <div class="stat-gem">
+        <div class="stat-val" id="stat-total">0 <span class="unit">km</span></div>
+        <div class="stat-lbl">Total</div>
       </div>
-      <div class="next-badge">
-        <span class="nb-lbl">Niveau</span>
-        <span class="nb-val" id="next-num">2</span>
+      <div class="stat-gem">
+        <div class="stat-val" id="stat-runs">0</div>
+        <div class="stat-lbl">Sorties</div>
+      </div>
+      <div class="stat-gem">
+        <div class="stat-val" id="stat-avg">0 <span class="unit">km</span></div>
+        <div class="stat-lbl">Moy./sortie</div>
+      </div>
+    </div>
+
+    <div class="xp-total-card">
+      <div class="xp-total-lbl">Points d'Expérience</div>
+      <div class="xp-total-val" id="xp-total-val">0 <span class="xp-unit">XP</span></div>
+    </div>
+
+    <div id="next-level-wrap">
+      <div class="next-card">
+        <div class="next-info">
+          <h3 id="next-title">Prochain rang</h3>
+          <p id="next-detail">Il te reste X km</p>
+        </div>
+        <div class="next-badge">
+          <span class="nb-lbl">Niveau</span>
+          <span class="nb-val" id="next-num">2</span>
+        </div>
+      </div>
+    </div>
+    <div id="max-level-wrap" style="display:none;">
+      <div class="max-banner">
+        <div class="mb-crown">👑</div>
+        <h3>Niveau Suprême Atteint</h3>
+        <p>Tu as accompli ce que peu osent seulement imaginer.</p>
       </div>
     </div>
   </div>
 
-  <div id="max-level-wrap" style="display:none;">
-    <div class="max-banner">
-      <div class="mb-crown">👑</div>
-      <h3>Niveau Suprême Atteint</h3>
-      <p>Tu as accompli ce que peu osent seulement imaginer.</p>
-    </div>
+  <!-- TAB: QUÊTES HEBDO -->
+  <div class="tab-content" id="content-hebdo">
+    <div class="quest-grid" id="weekly-quests"></div>
   </div>
 
-  <div class="section-hdr">Dernières sorties</div>
-  <div class="activity-list" id="activity-list"></div>
-  <button class="btn-refresh" onclick="refreshData()">↻ Actualiser les données</button>
+  <!-- TAB: HAUTS FAITS -->
+  <div class="tab-content" id="content-hauts">
+    <div class="quest-grid" id="milestone-quests"></div>
+  </div>
+
+  <!-- TAB: ACTIVITÉS -->
+  <div class="tab-content" id="content-activites">
+    <div class="activity-list" id="activity-list"></div>
+    <button class="btn-refresh" onclick="refreshData()">↻ Actualiser les données</button>
+  </div>
 </div>
 
 <script>
 // ═══ CONFIG ═══
-const CLIENT_ID = '235329';
+const CLIENT_ID = 'REMPLACE_PAR_TON_CLIENT_ID';
 const REDIRECT_URI = window.location.origin + window.location.pathname;
 
-// ═══ OAUTH ═══
-function startOAuth() {
-  const state = Math.random().toString(36).slice(2);
-  sessionStorage.setItem('oauth_state', state);
-  const url = `https://www.strava.com/oauth/authorize`
-    + `?client_id=${CLIENT_ID}`
-    + `&redirect_uri=${encodeURIComponent(REDIRECT_URI)}`
-    + `&response_type=code`
-    + `&scope=activity:read_all`
-    + `&state=${state}`;
-  window.location.href = url;
+// ═══ TABS ═══
+function switchTab(name) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  document.getElementById('content-' + name).classList.add('active');
 }
 
-async function handleOAuthCallback() {
-  const params = new URLSearchParams(window.location.search);
-  const code = params.get('code');
-  const state = params.get('state');
-  const error = params.get('error');
-
-  if (error) { showError("Autorisation refusée par Strava."); return false; }
-  if (!code) return false;
-
-  const savedState = sessionStorage.getItem('oauth_state');
-  if (state !== savedState) { showError("Erreur de sécurité (state mismatch)."); return false; }
-
-  history.replaceState(null, '', window.location.pathname);
-  sessionStorage.removeItem('oauth_state');
-
-  setLoading("Échange du code OAuth…");
-
-  try {
-    const res = await fetch('/api/exchange', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ code }),
-    });
-    const data = await res.json();
-    if (!res.ok) throw new Error(data.error || 'Erreur serveur');
-
-    currentToken = data.access_token;
-    if (data.athlete?.firstname) {
-      document.getElementById('athlete-name').textContent = data.athlete.firstname + ' ' + (data.athlete.lastname || '');
-    }
-    return true;
-  } catch(e) {
-    showError(e.message);
-    return false;
+// ═══ PIXEL CHARACTERS ═══
+// Each character is a 16x16 pixel art grid
+// Format: array of [x, y, color] pixels
+const PIXEL_CHARS = {
+  0: { // Novice — simple stick figure with gray clothes
+    name: "Novice",
+    pixels: drawNovice()
+  },
+  1: { // Marcheur — basic runner, blue outfit
+    name: "Marcheur",
+    pixels: drawMarcheur()
+  },
+  2: { // Coureur Confirmé — runner with gear, green
+    name: "Confirmé",
+    pixels: drawConfirme()
+  },
+  3: { // Elite — sleek runner, purple
+    name: "Élite",
+    pixels: drawElite()
+  },
+  4: { // Champion — armored runner, gold
+    name: "Champion",
+    pixels: drawChampion()
+  },
+  5: { // Maître — glowing runner, cyan
+    name: "Maître",
+    pixels: drawMaitre()
+  },
+  6: { // Titan — big armored, dark red
+    name: "Titan",
+    pixels: drawTitan()
+  },
+  7: { // Légende — ethereal, gold aura
+    name: "Légende",
+    pixels: drawLegende()
   }
+};
+
+function drawNovice() {
+  // Simple gray stick figure
+  return [
+    // head
+    [7,1,'#e8c97a'],[8,1,'#e8c97a'],
+    [6,2,'#e8c97a'],[7,2,'#e8c97a'],[8,2,'#e8c97a'],[9,2,'#e8c97a'],
+    [6,3,'#e8c97a'],[7,3,'#1a1a1a'],[8,3,'#e8c97a'],[9,3,'#1a1a1a'],
+    [6,4,'#e8c97a'],[7,4,'#e8c97a'],[8,4,'#e8c97a'],[9,4,'#e8c97a'],
+    // body
+    [7,5,'#888'],[8,5,'#888'],
+    [7,6,'#888'],[8,6,'#888'],
+    [7,7,'#888'],[8,7,'#888'],
+    // arms
+    [5,5,'#888'],[6,5,'#888'],[9,5,'#888'],[10,5,'#888'],
+    [5,6,'#888'],[10,6,'#888'],
+    // legs
+    [6,8,'#555'],[7,8,'#555'],[8,8,'#555'],[9,8,'#555'],
+    [6,9,'#555'],[9,9,'#555'],
+    [5,10,'#555'],[6,10,'#555'],[9,10,'#555'],[10,10,'#555'],
+    [5,11,'#333'],[6,11,'#333'],[9,11,'#333'],[10,11,'#333'],
+  ];
 }
+
+function drawMarcheur() {
+  return [
+    // head
+    [7,1,'#e8c97a'],[8,1,'#e8c97a'],
+    [6,2,'#e8c97a'],[7,2,'#e8c97a'],[8,2,'#e8c97a'],[9,2,'#e8c97a'],
+    [6,3,'#e8c97a'],[7,3,'#1a1a1a'],[8,3,'#e8c97a'],[9,3,'#1a1a1a'],
+    [6,4,'#e8c97a'],[7,4,'#e8c97a'],[8,4,'#e8c97a'],[9,4,'#e8c97a'],
+    // headband
+    [6,2,'#4488ff'],[7,2,'#4488ff'],[8,2,'#4488ff'],[9,2,'#4488ff'],
+    // body - blue shirt
+    [6,5,'#2255cc'],[7,5,'#2255cc'],[8,5,'#2255cc'],[9,5,'#2255cc'],
+    [6,6,'#2255cc'],[7,6,'#2255cc'],[8,6,'#2255cc'],[9,6,'#2255cc'],
+    [6,7,'#2255cc'],[7,7,'#2255cc'],[8,7,'#2255cc'],[9,7,'#2255cc'],
+    // arms running
+    [4,5,'#e8c97a'],[5,5,'#e8c97a'],[5,6,'#e8c97a'],
+    [10,6,'#e8c97a'],[10,7,'#e8c97a'],[11,7,'#e8c97a'],
+    // shorts
+    [6,8,'#1133aa'],[7,8,'#1133aa'],[8,8,'#1133aa'],[9,8,'#1133aa'],
+    // legs
+    [6,9,'#e8c97a'],[7,9,'#e8c97a'],[8,9,'#e8c97a'],[9,9,'#e8c97a'],
+    [5,10,'#e8c97a'],[6,10,'#e8c97a'],[8,10,'#e8c97a'],[9,10,'#e8c97a'],
+    // shoes
+    [4,11,'#ffffff'],[5,11,'#ffffff'],[6,11,'#ffffff'],
+    [8,11,'#ffffff'],[9,11,'#ffffff'],[10,11,'#ffffff'],
+  ];
+}
+
+function drawConfirme() {
+  return [
+    // head
+    [7,1,'#e8c97a'],[8,1,'#e8c97a'],
+    [6,2,'#e8c97a'],[7,2,'#e8c97a'],[8,2,'#e8c97a'],[9,2,'#e8c97a'],
+    [6,3,'#e8c97a'],[7,3,'#1a1a1a'],[8,3,'#e8c97a'],[9,3,'#1a1a1a'],
+    [6,4,'#e8c97a'],[7,4,'#e8c97a'],[8,4,'#e8c97a'],[9,4,'#e8c97a'],
+    // cap
+    [5,1,'#22aa44'],[6,1,'#22aa44'],[7,1,'#22aa44'],[8,1,'#22aa44'],[9,1,'#22aa44'],[10,1,'#22aa44'],
+    [4,2,'#22aa44'],
+    // body - green jersey
+    [5,5,'#22aa44'],[6,5,'#22aa44'],[7,5,'#22aa44'],[8,5,'#22aa44'],[9,5,'#22aa44'],[10,5,'#22aa44'],
+    [5,6,'#22aa44'],[6,6,'#1a8833'],[7,6,'#1a8833'],[8,6,'#1a8833'],[9,6,'#22aa44'],[10,6,'#22aa44'],
+    [5,7,'#22aa44'],[6,7,'#22aa44'],[7,7,'#22aa44'],[8,7,'#22aa44'],[9,7,'#22aa44'],[10,7,'#22aa44'],
+    // arms
+    [3,5,'#e8c97a'],[4,5,'#e8c97a'],[4,6,'#e8c97a'],
+    [11,6,'#e8c97a'],[11,7,'#e8c97a'],[12,7,'#e8c97a'],
+    // shorts
+    [6,8,'#115522'],[7,8,'#115522'],[8,8,'#115522'],[9,8,'#115522'],
+    // legs
+    [6,9,'#e8c97a'],[7,9,'#e8c97a'],[8,9,'#e8c97a'],[9,9,'#e8c97a'],
+    [5,10,'#e8c97a'],[6,10,'#e8c97a'],[8,10,'#e8c97a'],[9,10,'#e8c97a'],
+    // shoes
+    [4,11,'#22aa44'],[5,11,'#22aa44'],[6,11,'#22aa44'],
+    [8,11,'#22aa44'],[9,11,'#22aa44'],[10,11,'#22aa44'],
+  ];
+}
+
+function drawElite() {
+  return [
+    // head
+    [7,1,'#e8c97a'],[8,1,'#e8c97a'],
+    [6,2,'#e8c97a'],[7,2,'#e8c97a'],[8,2,'#e8c97a'],[9,2,'#e8c97a'],
+    [6,3,'#e8c97a'],[7,3,'#1a1a1a'],[8,3,'#e8c97a'],[9,3,'#1a1a1a'],
+    [6,4,'#e8c97a'],[7,4,'#c084fc'],[8,4,'#c084fc'],[9,4,'#e8c97a'],
+    // hair/headband purple
+    [6,1,'#c084fc'],[7,1,'#c084fc'],[8,1,'#c084fc'],[9,1,'#c084fc'],
+    // body - purple suit with stripe
+    [5,5,'#7c3aed'],[6,5,'#7c3aed'],[7,5,'#c084fc'],[8,5,'#c084fc'],[9,5,'#7c3aed'],[10,5,'#7c3aed'],
+    [5,6,'#7c3aed'],[6,6,'#7c3aed'],[7,6,'#c084fc'],[8,6,'#c084fc'],[9,6,'#7c3aed'],[10,6,'#7c3aed'],
+    [5,7,'#7c3aed'],[6,7,'#7c3aed'],[7,7,'#7c3aed'],[8,7,'#7c3aed'],[9,7,'#7c3aed'],[10,7,'#7c3aed'],
+    // arms
+    [3,4,'#e8c97a'],[4,4,'#e8c97a'],[4,5,'#e8c97a'],
+    [11,5,'#e8c97a'],[11,6,'#e8c97a'],[12,6,'#e8c97a'],
+    // shorts
+    [6,8,'#4c1d95'],[7,8,'#4c1d95'],[8,8,'#4c1d95'],[9,8,'#4c1d95'],
+    // legs
+    [6,9,'#e8c97a'],[7,9,'#e8c97a'],[8,9,'#e8c97a'],[9,9,'#e8c97a'],
+    [5,10,'#e8c97a'],[6,10,'#e8c97a'],[8,10,'#e8c97a'],[9,10,'#e8c97a'],
+    // shoes purple
+    [4,11,'#c084fc'],[5,11,'#c084fc'],[6,11,'#c084fc'],
+    [8,11,'#c084fc'],[9,11,'#c084fc'],[10,11,'#c084fc'],
+  ];
+}
+
+function drawChampion() {
+  return [
+    // crown
+    [5,0,'#f5e4b0'],[7,0,'#f5e4b0'],[9,0,'#f5e4b0'],[11,0,'#f5e4b0'],
+    [5,1,'#c9a84c'],[6,1,'#c9a84c'],[7,1,'#c9a84c'],[8,1,'#c9a84c'],[9,1,'#c9a84c'],[10,1,'#c9a84c'],[11,1,'#c9a84c'],
+    // head
+    [6,2,'#e8c97a'],[7,2,'#e8c97a'],[8,2,'#e8c97a'],[9,2,'#e8c97a'],
+    [6,3,'#e8c97a'],[7,3,'#1a1a1a'],[8,3,'#e8c97a'],[9,3,'#1a1a1a'],
+    [6,4,'#e8c97a'],[7,4,'#e8c97a'],[8,4,'#e8c97a'],[9,4,'#e8c97a'],
+    // armor gold
+    [4,5,'#c9a84c'],[5,5,'#c9a84c'],[6,5,'#f5e4b0'],[7,5,'#f5e4b0'],[8,5,'#f5e4b0'],[9,5,'#c9a84c'],[10,5,'#c9a84c'],[11,5,'#c9a84c'],
+    [4,6,'#c9a84c'],[5,6,'#c9a84c'],[6,6,'#c9a84c'],[7,6,'#c9a84c'],[8,6,'#c9a84c'],[9,6,'#c9a84c'],[10,6,'#c9a84c'],[11,6,'#c9a84c'],
+    [5,7,'#c9a84c'],[6,7,'#7a5f20'],[7,7,'#7a5f20'],[8,7,'#7a5f20'],[9,7,'#c9a84c'],
+    // arm armor
+    [3,5,'#c9a84c'],[3,6,'#c9a84c'],[2,6,'#e8c97a'],
+    [12,5,'#c9a84c'],[12,6,'#c9a84c'],[13,6,'#e8c97a'],
+    // legs armor
+    [6,8,'#7a5f20'],[7,8,'#7a5f20'],[8,8,'#7a5f20'],[9,8,'#7a5f20'],
+    [6,9,'#c9a84c'],[7,9,'#c9a84c'],[8,9,'#c9a84c'],[9,9,'#c9a84c'],
+    [5,10,'#c9a84c'],[6,10,'#c9a84c'],[8,10,'#c9a84c'],[9,10,'#c9a84c'],
+    // gold boots
+    [4,11,'#f5e4b0'],[5,11,'#f5e4b0'],[6,11,'#f5e4b0'],
+    [8,11,'#f5e4b0'],[9,11,'#f5e4b0'],[10,11,'#f5e4b0'],
+  ];
+}
+
+function drawMaitre() {
+  return [
+    // glow aura
+    [6,0,'#2dd4a0'],[7,0,'#2dd4a0'],[8,0,'#2dd4a0'],[9,0,'#2dd4a0'],
+    // head with cyan tint
+    [6,1,'#b0f0e0'],[7,1,'#b0f0e0'],[8,1,'#b0f0e0'],[9,1,'#b0f0e0'],
+    [6,2,'#b0f0e0'],[7,2,'#1a1a1a'],[8,2,'#b0f0e0'],[9,2,'#1a1a1a'],
+    [6,3,'#b0f0e0'],[7,3,'#b0f0e0'],[8,3,'#b0f0e0'],[9,3,'#b0f0e0'],
+    // glowing body
+    [4,4,'#2dd4a0'],[5,4,'#2dd4a0'],[6,4,'#2dd4a0'],[7,4,'#2dd4a0'],[8,4,'#2dd4a0'],[9,4,'#2dd4a0'],[10,4,'#2dd4a0'],[11,4,'#2dd4a0'],
+    [4,5,'#0fa070'],[5,5,'#0fa070'],[6,5,'#2dd4a0'],[7,5,'#2dd4a0'],[8,5,'#2dd4a0'],[9,5,'#2dd4a0'],[10,5,'#0fa070'],[11,5,'#0fa070'],
+    [4,6,'#0fa070'],[5,6,'#0fa070'],[6,6,'#2dd4a0'],[7,6,'#2dd4a0'],[8,6,'#2dd4a0'],[9,6,'#2dd4a0'],[10,6,'#0fa070'],[11,6,'#0fa070'],
+    [5,7,'#0fa070'],[6,7,'#0fa070'],[7,7,'#0fa070'],[8,7,'#0fa070'],[9,7,'#0fa070'],
+    // arms with glow
+    [2,5,'#2dd4a0'],[3,5,'#2dd4a0'],[3,6,'#2dd4a0'],
+    [12,6,'#2dd4a0'],[12,7,'#2dd4a0'],[13,7,'#2dd4a0'],
+    // legs
+    [6,8,'#0a7050'],[7,8,'#0a7050'],[8,8,'#0a7050'],[9,8,'#0a7050'],
+    [6,9,'#0fa070'],[7,9,'#0fa070'],[8,9,'#0fa070'],[9,9,'#0fa070'],
+    [5,10,'#2dd4a0'],[6,10,'#2dd4a0'],[8,10,'#2dd4a0'],[9,10,'#2dd4a0'],
+    [4,11,'#2dd4a0'],[5,11,'#2dd4a0'],[6,11,'#2dd4a0'],
+    [8,11,'#2dd4a0'],[9,11,'#2dd4a0'],[10,11,'#2dd4a0'],
+    // sparkles
+    [2,3,'#2dd4a0'],[13,4,'#2dd4a0'],[1,8,'#2dd4a0'],[14,9,'#2dd4a0'],
+  ];
+}
+
+function drawTitan() {
+  return [
+    // helmet
+    [5,0,'#8b0000'],[6,0,'#8b0000'],[7,0,'#cc2200'],[8,0,'#cc2200'],[9,0,'#8b0000'],[10,0,'#8b0000'],
+    [5,1,'#cc2200'],[6,1,'#cc2200'],[7,1,'#cc2200'],[8,1,'#cc2200'],[9,1,'#cc2200'],[10,1,'#cc2200'],
+    [5,2,'#cc2200'],[6,2,'#cc2200'],[7,2,'#e8c97a'],[8,2,'#e8c97a'],[9,2,'#cc2200'],[10,2,'#cc2200'],
+    [5,3,'#cc2200'],[6,3,'#e8c97a'],[7,3,'#1a1a1a'],[8,3,'#e8c97a'],[9,3,'#1a1a1a'],[10,3,'#cc2200'],
+    [5,4,'#cc2200'],[6,4,'#e8c97a'],[7,4,'#e8c97a'],[8,4,'#e8c97a'],[9,4,'#e8c97a'],[10,4,'#cc2200'],
+    // heavy armor body
+    [3,5,'#8b0000'],[4,5,'#cc2200'],[5,5,'#cc2200'],[6,5,'#ff4400'],[7,5,'#ff4400'],[8,5,'#ff4400'],[9,5,'#cc2200'],[10,5,'#cc2200'],[11,5,'#cc2200'],[12,5,'#8b0000'],
+    [3,6,'#8b0000'],[4,6,'#cc2200'],[5,6,'#cc2200'],[6,6,'#cc2200'],[7,6,'#cc2200'],[8,6,'#cc2200'],[9,6,'#cc2200'],[10,6,'#cc2200'],[11,6,'#cc2200'],[12,6,'#8b0000'],
+    [4,7,'#8b0000'],[5,7,'#8b0000'],[6,7,'#cc2200'],[7,7,'#cc2200'],[8,7,'#cc2200'],[9,7,'#cc2200'],[10,7,'#8b0000'],[11,7,'#8b0000'],
+    // massive arms
+    [2,5,'#8b0000'],[2,6,'#8b0000'],[1,6,'#e8c97a'],[1,7,'#e8c97a'],
+    [13,5,'#8b0000'],[13,6,'#8b0000'],[14,6,'#e8c97a'],[14,7,'#e8c97a'],
+    // legs armored
+    [5,8,'#8b0000'],[6,8,'#8b0000'],[7,8,'#8b0000'],[8,8,'#8b0000'],[9,8,'#8b0000'],[10,8,'#8b0000'],
+    [5,9,'#cc2200'],[6,9,'#cc2200'],[7,9,'#cc2200'],[8,9,'#cc2200'],[9,9,'#cc2200'],
+    [4,10,'#cc2200'],[5,10,'#cc2200'],[8,10,'#cc2200'],[9,10,'#cc2200'],
+    [3,11,'#8b0000'],[4,11,'#8b0000'],[5,11,'#8b0000'],
+    [8,11,'#8b0000'],[9,11,'#8b0000'],[10,11,'#8b0000'],
+  ];
+}
+
+function drawLegende() {
+  return [
+    // divine aura all around
+    [6,0,'#f5e4b0'],[7,0,'#f5e4b0'],[8,0,'#f5e4b0'],
+    [4,1,'#c9a84c'],[5,1,'#c9a84c'],
+    [10,1,'#c9a84c'],[11,1,'#c9a84c'],
+    // head golden
+    [6,1,'#f5e4b0'],[7,1,'#f5e4b0'],[8,1,'#f5e4b0'],[9,1,'#f5e4b0'],
+    [6,2,'#f5e4b0'],[7,2,'#ffffff'],[8,2,'#f5e4b0'],[9,2,'#ffffff'],
+    [6,3,'#f5e4b0'],[7,3,'#f5e4b0'],[8,3,'#f5e4b0'],[9,3,'#f5e4b0'],
+    // divine body glowing
+    [4,4,'#c9a84c'],[5,4,'#c9a84c'],[6,4,'#f5e4b0'],[7,4,'#f5e4b0'],[8,4,'#f5e4b0'],[9,4,'#f5e4b0'],[10,4,'#c9a84c'],[11,4,'#c9a84c'],
+    [3,5,'#c9a84c'],[4,5,'#c9a84c'],[5,5,'#c9a84c'],[6,5,'#f5e4b0'],[7,5,'#ffffff'],[8,5,'#ffffff'],[9,5,'#f5e4b0'],[10,5,'#c9a84c'],[11,5,'#c9a84c'],[12,5,'#c9a84c'],
+    [3,6,'#c9a84c'],[4,6,'#c9a84c'],[5,6,'#c9a84c'],[6,6,'#f5e4b0'],[7,6,'#f5e4b0'],[8,6,'#f5e4b0'],[9,6,'#f5e4b0'],[10,6,'#c9a84c'],[11,6,'#c9a84c'],[12,6,'#c9a84c'],
+    [4,7,'#c9a84c'],[5,7,'#c9a84c'],[6,7,'#c9a84c'],[7,7,'#c9a84c'],[8,7,'#c9a84c'],[9,7,'#c9a84c'],[10,7,'#c9a84c'],[11,7,'#c9a84c'],
+    // wings of light
+    [1,4,'#f5e4b0'],[2,4,'#f5e4b0'],[2,5,'#f5e4b0'],[1,5,'#c9a84c'],
+    [13,4,'#f5e4b0'],[14,4,'#f5e4b0'],[13,5,'#f5e4b0'],[14,5,'#c9a84c'],
+    [0,6,'#c9a84c'],[1,6,'#c9a84c'],
+    [14,6,'#c9a84c'],[15,6,'#c9a84c'],
+    // legs divine
+    [6,8,'#7a5f20'],[7,8,'#7a5f20'],[8,8,'#7a5f20'],[9,8,'#7a5f20'],
+    [6,9,'#c9a84c'],[7,9,'#c9a84c'],[8,9,'#c9a84c'],[9,9,'#c9a84c'],
+    [5,10,'#c9a84c'],[6,10,'#c9a84c'],[8,10,'#c9a84c'],[9,10,'#c9a84c'],
+    [4,11,'#f5e4b0'],[5,11,'#f5e4b0'],[6,11,'#f5e4b0'],
+    [8,11,'#f5e4b0'],[9,11,'#f5e4b0'],[10,11,'#f5e4b0'],
+    // sparkles everywhere
+    [0,2,'#f5e4b0'],[15,2,'#f5e4b0'],[0,9,'#c9a84c'],[15,9,'#c9a84c'],
+    [2,11,'#f5e4b0'],[13,11,'#f5e4b0'],
+  ];
+}
+
+function getCharIndex(level) {
+  if (level >= 196) return 7; // L'Éternel → Légende
+  if (level >= 176) return 6; // Titan range
+  if (level >= 146) return 5; // Maître range
+  if (level >= 116) return 4; // Champion range
+  if (level >= 81)  return 3; // Elite range
+  if (level >= 51)  return 2; // Confirmé range
+  if (level >= 21)  return 1; // Marcheur range
+  return 0;                   // Novice
+}
+
+function drawPixelChar(canvasId, charIndex) {
+  const canvas = document.getElementById(canvasId);
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  ctx.clearRect(0, 0, 16, 16);
+
+  const char = PIXEL_CHARS[charIndex];
+  if (!char) return;
+
+  char.pixels.forEach(([x, y, color]) => {
+    ctx.fillStyle = color;
+    ctx.fillRect(x, y, 1, 1);
+  });
+}
+
+// ═══ RANK MODAL ═══
+const RANK_GROUPS = [
+  { title: "Novice", levels: "Niveaux 1–5", minKm: 0, charIdx: 0 },
+  { title: "Marcheur", levels: "Niveaux 6–10", minKm: 50, charIdx: 1 },
+  { title: "Coureur Confirmé", levels: "Niveaux 11–20", minKm: 100, charIdx: 2 },
+  { title: "Élite", levels: "Niveaux 21–50", minKm: 200, charIdx: 2 },
+  { title: "Conquérant", levels: "Niveaux 51–80", minKm: 500, charIdx: 3 },
+  { title: "Champion", levels: "Niveaux 81–115", minKm: 1000, charIdx: 4 },
+  { title: "Maître Absolu", levels: "Niveaux 116–145", minKm: 2000, charIdx: 5 },
+  { title: "Titan", levels: "Niveaux 146–175", minKm: 3500, charIdx: 6 },
+  { title: "Grand Explorateur", levels: "Niveaux 176–195", minKm: 5500, charIdx: 6 },
+  { title: "Lumière Dorée", levels: "Niveaux 196–200", minKm: 8000, charIdx: 7 },
+  { title: "L'Éternel", levels: "Niveau 200", minKm: 10000, charIdx: 7 },
+];
+
+let currentTotalKm = 0;
+
+function openRankModal() {
+  document.getElementById('rank-modal').classList.add('open');
+  const list = document.getElementById('rank-list');
+  list.innerHTML = RANK_GROUPS.map((g, i) => {
+    const unlocked = currentTotalKm >= g.minKm;
+    const isCurrent = unlocked && (i === RANK_GROUPS.length - 1 || currentTotalKm < RANK_GROUPS[i+1]?.minKm);
+    const stateClass = isCurrent ? 'current' : unlocked ? 'unlocked' : 'locked';
+    const icon = isCurrent ? '⚔️' : unlocked ? '✓' : '🔒';
+
+    const canvasId = `rank-canvas-${i}`;
+    return `
+      <div class="rank-row ${stateClass}">
+        <canvas class="rank-row-pixel" id="${canvasId}" width="16" height="16"></canvas>
+        <div class="rank-row-info">
+          <div class="rank-row-name">${icon} ${g.title}</div>
+          <div class="rank-row-levels">${g.levels} · À partir de ${g.minKm} km</div>
+        </div>
+        ${isCurrent ? '<div class="rank-current-badge">Ton rang</div>' : ''}
+        ${!unlocked ? `<div class="rank-row-km">${g.minKm} km</div>` : ''}
+      </div>
+    `;
+  }).join('');
+
+  // Draw pixel chars in modal after DOM update
+  setTimeout(() => {
+    RANK_GROUPS.forEach((g, i) => {
+      drawPixelChar(`rank-canvas-${i}`, g.charIdx);
+    });
+  }, 0);
+}
+
+function closeRankModal() {
+  document.getElementById('rank-modal').classList.remove('open');
+}
+document.getElementById('rank-modal').addEventListener('click', function(e) {
+  if (e.target === this) closeRankModal();
+});
 
 // ═══ LEVELS ═══
 const RANK_TITLES = [
-  "Novice","Marcheur","Coureur Confirmé","Pistard","Traileur",
-  "Endurci","Éclaireur","Guerrier du Bitume","Sprinter d'Élite","Gardien des Sentiers",
-  "Conquérant","Ironclad","Maître Coureur","Seigneur du Mile","Sentinelle",
-  "Chevalier des Routes","Champion","Titan","Maître Absolu","Grand Explorateur",
-  "Sage du Marathon","Oracle des Pistes","Warlord","Berserker","Nomade Éternel",
-  "Architecte du Temps","Fantôme du Sentier","Gardien du Cosmos","Seigneur Lumière","Lumière Dorée",
-  "Étoile Filante","Astre","Supernova","Nébuleuse","Transcendant",
-  "Démiurge","Entité Primordiale","Dieu du Mouvement","Légende Absolue","L'Éternel",
+  "Aspirant",           // lv 1–9
+  "Foulard de Terre",   // lv 10–19
+  "Éclaireur des Pistes", // lv 20–29
+  "Traqueur des Sentiers", // lv 30–39
+  "Coursier des Royaumes", // lv 40–49
+  "Lame-Vent",          // lv 50–59
+  "Gardien des Lieues", // lv 60–69
+  "Chevalier Véloce",   // lv 70–79
+  "Chasseur de Brumes", // lv 80–89
+  "Estafette de l'Aube", // lv 90–99
+  "Seigneur des Foulées", // lv 100–109
+  "Maître du Souffle",  // lv 110–119
+  "Arpenteur des Abysses", // lv 120–129
+  "Fantôme Véloce",     // lv 130–139
+  "Conquérant des Cimes", // lv 140–149
+  "Invocateur du Vent", // lv 150–159
+  "Transcendant",       // lv 160–169
+  "Élu des Étoiles",    // lv 170–179
+  "Dieu-Coureur",       // lv 180–189
+  "Éternel Voyageur",   // lv 190–199
+  "Éternel Voyageur",   // lv 200
 ];
-function getRankTitle(l) { return RANK_TITLES[Math.min(Math.floor((l-1)/5), RANK_TITLES.length-1)]; }
+function getRankTitle(l) { return RANK_TITLES[Math.min(Math.floor(l/10), RANK_TITLES.length-1)]; }
 function kmForLevel(l) {
   if (l <= 1) return 0;
   if (l > 200) return 10000;
@@ -505,16 +786,11 @@ function getLevel(km) {
 
 // ═══ QUESTS ═══
 const WQ = [
-  { id:"w1", icon:"🏃", name:"Foulée de 10 km", desc:"Cours un 10 km cette semaine",
-    check:a=>a.some(x=>x.distance>=10000), progress:a=>Math.min(1,Math.max(0,...a.map(x=>x.distance))/10000), xp:200 },
-  { id:"w2", icon:"🔥", name:"Triple Effort", desc:"Réalise 3 sorties cette semaine",
-    check:a=>a.length>=3, progress:a=>Math.min(1,a.length/3), xp:150 },
-  { id:"w3", icon:"⚡", name:"Semaine Active", desc:"Cours 25 km cette semaine",
-    check:a=>a.reduce((s,x)=>s+x.distance,0)>=25000, progress:a=>Math.min(1,a.reduce((s,x)=>s+x.distance,0)/25000), xp:300 },
-  { id:"w4", icon:"🦅", name:"Marathonien Hebdo", desc:"Cours 42 km cette semaine",
-    check:a=>a.reduce((s,x)=>s+x.distance,0)>=42000, progress:a=>Math.min(1,a.reduce((s,x)=>s+x.distance,0)/42000), xp:600 },
-  { id:"w5", icon:"🌲", name:"Appel de la Forêt", desc:"Réalise un Trail cette semaine",
-    check:a=>a.some(x=>x.type==="TrailRun"), progress:a=>a.some(x=>x.type==="TrailRun")?1:0, xp:180 },
+  { id:"w1", icon:"🏃", name:"Foulée de 10 km", desc:"Cours un 10 km cette semaine", check:a=>a.some(x=>x.distance>=10000), progress:a=>Math.min(1,Math.max(0,...a.map(x=>x.distance))/10000), xp:200 },
+  { id:"w2", icon:"🔥", name:"Triple Effort", desc:"Réalise 3 sorties cette semaine", check:a=>a.length>=3, progress:a=>Math.min(1,a.length/3), xp:150 },
+  { id:"w3", icon:"⚡", name:"Semaine Active", desc:"Cours 25 km cette semaine", check:a=>a.reduce((s,x)=>s+x.distance,0)>=25000, progress:a=>Math.min(1,a.reduce((s,x)=>s+x.distance,0)/25000), xp:300 },
+  { id:"w4", icon:"🦅", name:"Marathonien Hebdo", desc:"Cours 42 km cette semaine", check:a=>a.reduce((s,x)=>s+x.distance,0)>=42000, progress:a=>Math.min(1,a.reduce((s,x)=>s+x.distance,0)/42000), xp:600 },
+  { id:"w5", icon:"🌲", name:"Appel de la Forêt", desc:"Réalise un Trail cette semaine", check:a=>a.some(x=>x.type==="TrailRun"), progress:a=>a.some(x=>x.type==="TrailRun")?1:0, xp:180 },
 ];
 const MQ = [
   { id:"m1", icon:"✦", name:"Premier Pas", desc:"Ta première sortie", check:a=>a.length>=1, progress:a=>Math.min(1,a.length), xp:100 },
@@ -544,8 +820,8 @@ function calcXP(all, week) {
   WQ.forEach(q=>{ if(q.check(week)) xp+=q.xp; });
   return Math.round(xp);
 }
-function icon(type) { return type==="TrailRun"?"🌲":type==="VirtualRun"||type==="Treadmill"?"🏠":"🏃"; }
-function label(type) { return type==="TrailRun"?"Trail":type==="VirtualRun"||type==="Treadmill"?"Tapis":"Route"; }
+function actIcon(type) { return type==="TrailRun"?"🌲":type==="VirtualRun"||type==="Treadmill"?"🏠":"🏃"; }
+function actLabel(type) { return type==="TrailRun"?"Trail":type==="VirtualRun"||type==="Treadmill"?"Tapis":"Route"; }
 function fdate(d) { return new Date(d).toLocaleDateString('fr-FR',{day:'numeric',month:'short'}); }
 
 function questCard(q, done, prog, weekly=false) {
@@ -563,11 +839,17 @@ function questCard(q, done, prog, weekly=false) {
 function renderGame(activities) {
   const week = getWeekActs(activities);
   const totalKm = parseFloat((activities.reduce((s,a)=>s+(a.distance/1000),0)).toFixed(1));
+  currentTotalKm = totalKm;
   const lv = getLevel(totalKm);
   const xp = calcXP(activities, week);
   const floor = kmForLevel(lv);
   const ceil = lv < 200 ? kmForLevel(lv+1) : floor;
   const pct = lv>=200 ? 100 : Math.min(100,Math.round(((totalKm-floor)/(ceil-floor))*100));
+
+  // Pixel character
+  const charIdx = getCharIndex(lv);
+  drawPixelChar('pixel-canvas', charIdx);
+  document.getElementById('pixel-label').textContent = getRankTitle(lv);
 
   document.getElementById('level-num').textContent = lv;
   document.getElementById('level-title').textContent = getRankTitle(lv);
@@ -598,12 +880,12 @@ function renderGame(activities) {
   document.getElementById('weekly-quests').innerHTML = WQ.map(q=>questCard(q,q.check(week),q.progress(week),true)).join('');
   document.getElementById('milestone-quests').innerHTML = MQ.map(q=>questCard(q,q.check(activities),q.progress(activities))).join('');
 
-  document.getElementById('activity-list').innerHTML = activities.slice(0,10).map(a=>`
+  document.getElementById('activity-list').innerHTML = activities.slice(0,15).map(a=>`
     <div class="activity-row">
-      <div class="act-icon">${icon(a.type||a.sport_type)}</div>
+      <div class="act-icon">${actIcon(a.type||a.sport_type)}</div>
       <div class="act-body">
-        <div class="act-name">${a.name||label(a.type)}</div>
-        <div class="act-meta">${fdate(a.start_date)} · ${label(a.type)}</div>
+        <div class="act-name">${a.name||actLabel(a.type)}</div>
+        <div class="act-meta">${fdate(a.start_date)} · ${actLabel(a.type)}</div>
       </div>
       <div class="act-km">${(a.distance/1000).toFixed(1)} km</div>
       <div class="act-xp">+${Math.round((a.distance/1000)*10)} XP</div>
@@ -614,11 +896,37 @@ function renderGame(activities) {
   document.getElementById('game-screen').style.display='block';
 }
 
+// ═══ OAUTH ═══
+function startOAuth() {
+  const state = Math.random().toString(36).slice(2);
+  sessionStorage.setItem('oauth_state', state);
+  window.location.href = `https://www.strava.com/oauth/authorize?client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&response_type=code&scope=activity:read_all&state=${state}`;
+}
+
+async function handleOAuthCallback() {
+  const params = new URLSearchParams(window.location.search);
+  const code = params.get('code');
+  const state = params.get('state');
+  if (params.get('error')) { showError("Autorisation refusée par Strava."); return false; }
+  if (!code) return false;
+  if (state !== sessionStorage.getItem('oauth_state')) { showError("Erreur de sécurité."); return false; }
+  history.replaceState(null, '', window.location.pathname);
+  sessionStorage.removeItem('oauth_state');
+  setLoading("Échange du code OAuth…");
+  try {
+    const res = await fetch('/api/exchange', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({code}) });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error||'Erreur serveur');
+    currentToken = data.access_token;
+    if (data.athlete?.firstname) document.getElementById('athlete-name').textContent = data.athlete.firstname;
+    return true;
+  } catch(e) { showError(e.message); return false; }
+}
+
 async function fetchActivities(token) {
   let all=[], page=1;
   while(true) {
-    const r = await fetch(`https://www.strava.com/api/v3/athlete/activities?per_page=200&page=${page}`,
-      {headers:{Authorization:`Bearer ${token}`}});
+    const r = await fetch(`https://www.strava.com/api/v3/athlete/activities?per_page=200&page=${page}`,{headers:{Authorization:`Bearer ${token}`}});
     if(!r.ok){const e=await r.json().catch(()=>({}));throw new Error(e.message||`Erreur Strava (${r.status})`);}
     const batch=await r.json();
     if(!batch.length) break;
@@ -635,21 +943,18 @@ function setLoading(msg) {
   document.getElementById('loading-screen').style.display='flex';
   document.getElementById('loading-text').textContent=msg||'Consultation des archives…';
 }
-
 function showError(msg) {
   document.getElementById('loading-screen').style.display='none';
   document.getElementById('setup-screen').style.display='flex';
   const el=document.getElementById('error-banner');
   el.textContent=msg; el.style.display='block';
 }
-
 async function refreshData() {
   if(!currentToken) return;
   setLoading('Synchronisation…');
   try { renderGame(await fetchActivities(currentToken)); }
   catch(e){ document.getElementById('loading-screen').style.display='none'; document.getElementById('game-screen').style.display='block'; }
 }
-
 function logout() {
   currentToken=null;
   document.getElementById('game-screen').style.display='none';
