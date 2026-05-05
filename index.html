@@ -126,11 +126,11 @@ body::before {
 .hero-card::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 80% 0%, rgba(201,168,76,0.08) 0%, transparent 60%), radial-gradient(ellipse at 0% 100%, rgba(96,165,250,0.05) 0%, transparent 50%); }
 .hero-card::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); opacity: 0.5; }
 
-.hero-top { display: flex; gap: 1.5rem; align-items: flex-start; position: relative; }
+.hero-top { display: flex; gap: 1.5rem; align-items: flex-start; position: relative; flex-wrap: wrap; }
 
 /* ═══ PIXEL CHARACTER ═══ */
 .pixel-char-wrap { flex-shrink: 0; display: flex; flex-direction: column; align-items: center; gap: 8px; }
-.pixel-canvas { image-rendering: pixelated; image-rendering: crisp-edges; width: 80px; height: 80px; }
+.pixel-canvas { image-rendering: pixelated; image-rendering: crisp-edges; width: 96px; height: 96px; }
 .pixel-label { font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 1px; color: var(--muted); text-transform: uppercase; text-align: center; }
 
 .hero-info { flex: 1; }
@@ -148,7 +148,7 @@ body::before {
 .level-row { display: flex; align-items: flex-end; gap: 10px; margin-bottom: 4px; }
 .level-num { font-family: 'Cinzel', serif; font-size: 64px; font-weight: 900; line-height: 1; letter-spacing: -3px; background: linear-gradient(180deg, #fff 0%, var(--gold3) 40%, var(--gold) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 .level-info-side { padding-bottom: 8px; }
-.level-title-text { font-family: 'Cinzel', serif; font-size: 18px; font-weight: 600; color: var(--gold3); letter-spacing: 1px; margin-bottom: 2px; }
+.level-title-text { font-family: 'Cinzel', serif; font-size: 15px; font-weight: 600; color: var(--gold3); letter-spacing: 0.5px; margin-bottom: 2px; white-space: nowrap; overflow: visible; }
 .level-xp-label { font-size: 13px; color: var(--muted); font-style: italic; }
 
 .xp-track { position: relative; background: rgba(0,0,0,0.4); border: 1px solid var(--border); border-radius: 100px; height: 10px; margin: 1rem 0 8px; overflow: hidden; }
@@ -668,14 +668,14 @@ function drawLegende() {
 }
 
 function getCharIndex(level) {
-  if (level >= 196) return 7; // L'Éternel → Légende
-  if (level >= 176) return 6; // Titan range
-  if (level >= 146) return 5; // Maître range
-  if (level >= 116) return 4; // Champion range
-  if (level >= 81)  return 3; // Elite range
-  if (level >= 51)  return 2; // Confirmé range
-  if (level >= 21)  return 1; // Marcheur range
-  return 0;                   // Novice
+  if (level >= 170) return 7;
+  if (level >= 140) return 6;
+  if (level >= 110) return 5;
+  if (level >= 80)  return 4;
+  if (level >= 50)  return 3;
+  if (level >= 30)  return 2;
+  if (level >= 10)  return 1;
+  return 0;
 }
 
 function drawPixelChar(canvasId, charIndex) {
@@ -695,17 +695,26 @@ function drawPixelChar(canvasId, charIndex) {
 
 // ═══ RANK MODAL ═══
 const RANK_GROUPS = [
-  { title: "Novice", levels: "Niveaux 1–5", minKm: 0, charIdx: 0 },
-  { title: "Marcheur", levels: "Niveaux 6–10", minKm: 50, charIdx: 1 },
-  { title: "Coureur Confirmé", levels: "Niveaux 11–20", minKm: 100, charIdx: 2 },
-  { title: "Élite", levels: "Niveaux 21–50", minKm: 200, charIdx: 2 },
-  { title: "Conquérant", levels: "Niveaux 51–80", minKm: 500, charIdx: 3 },
-  { title: "Champion", levels: "Niveaux 81–115", minKm: 1000, charIdx: 4 },
-  { title: "Maître Absolu", levels: "Niveaux 116–145", minKm: 2000, charIdx: 5 },
-  { title: "Titan", levels: "Niveaux 146–175", minKm: 3500, charIdx: 6 },
-  { title: "Grand Explorateur", levels: "Niveaux 176–195", minKm: 5500, charIdx: 6 },
-  { title: "Lumière Dorée", levels: "Niveaux 196–200", minKm: 8000, charIdx: 7 },
-  { title: "L'Éternel", levels: "Niveau 200", minKm: 10000, charIdx: 7 },
+  { title: "Aspirant",              levels: "Niveaux 1–9",    minLv: 1,   maxLv: 9,   minKm: 0,    charIdx: 0 },
+  { title: "Foulard de Terre",      levels: "Niveaux 10–19",  minLv: 10,  maxLv: 19,  minKm: kmForLevel(10),  charIdx: 1 },
+  { title: "Éclaireur des Pistes",  levels: "Niveaux 20–29",  minLv: 20,  maxLv: 29,  minKm: kmForLevel(20),  charIdx: 1 },
+  { title: "Traqueur des Sentiers", levels: "Niveaux 30–39",  minLv: 30,  maxLv: 39,  minKm: kmForLevel(30),  charIdx: 2 },
+  { title: "Coursier des Royaumes", levels: "Niveaux 40–49",  minLv: 40,  maxLv: 49,  minKm: kmForLevel(40),  charIdx: 2 },
+  { title: "Lame-Vent",             levels: "Niveaux 50–59",  minLv: 50,  maxLv: 59,  minKm: kmForLevel(50),  charIdx: 3 },
+  { title: "Gardien des Lieues",    levels: "Niveaux 60–69",  minLv: 60,  maxLv: 69,  minKm: kmForLevel(60),  charIdx: 3 },
+  { title: "Chevalier Véloce",      levels: "Niveaux 70–79",  minLv: 70,  maxLv: 79,  minKm: kmForLevel(70),  charIdx: 3 },
+  { title: "Chasseur de Brumes",    levels: "Niveaux 80–89",  minLv: 80,  maxLv: 89,  minKm: kmForLevel(80),  charIdx: 4 },
+  { title: "Estafette de l'Aube",  levels: "Niveaux 90–99",  minLv: 90,  maxLv: 99,  minKm: kmForLevel(90),  charIdx: 4 },
+  { title: "Seigneur des Foulées",  levels: "Niveaux 100–109",minLv: 100, maxLv: 109, minKm: kmForLevel(100), charIdx: 4 },
+  { title: "Maître du Souffle",     levels: "Niveaux 110–119",minLv: 110, maxLv: 119, minKm: kmForLevel(110), charIdx: 5 },
+  { title: "Arpenteur des Abysses", levels: "Niveaux 120–129",minLv: 120, maxLv: 129, minKm: kmForLevel(120), charIdx: 5 },
+  { title: "Fantôme Véloce",        levels: "Niveaux 130–139",minLv: 130, maxLv: 139, minKm: kmForLevel(130), charIdx: 5 },
+  { title: "Conquérant des Cimes",  levels: "Niveaux 140–149",minLv: 140, maxLv: 149, minKm: kmForLevel(140), charIdx: 6 },
+  { title: "Invocateur du Vent",    levels: "Niveaux 150–159",minLv: 150, maxLv: 159, minKm: kmForLevel(150), charIdx: 6 },
+  { title: "Transcendant",          levels: "Niveaux 160–169",minLv: 160, maxLv: 169, minKm: kmForLevel(160), charIdx: 6 },
+  { title: "Élu des Étoiles",       levels: "Niveaux 170–179",minLv: 170, maxLv: 179, minKm: kmForLevel(170), charIdx: 7 },
+  { title: "Dieu-Coureur",          levels: "Niveaux 180–189",minLv: 180, maxLv: 189, minKm: kmForLevel(180), charIdx: 7 },
+  { title: "Éternel Voyageur",      levels: "Niveaux 190–200",minLv: 190, maxLv: 200, minKm: kmForLevel(190), charIdx: 7 },
 ];
 
 let currentTotalKm = 0;
@@ -713,31 +722,28 @@ let currentTotalKm = 0;
 function openRankModal() {
   document.getElementById('rank-modal').classList.add('open');
   const list = document.getElementById('rank-list');
+  const currentLv = getLevel(currentTotalKm);
   list.innerHTML = RANK_GROUPS.map((g, i) => {
-    const unlocked = currentTotalKm >= g.minKm;
-    const isCurrent = unlocked && (i === RANK_GROUPS.length - 1 || currentTotalKm < RANK_GROUPS[i+1]?.minKm);
+    const unlocked = currentLv >= g.minLv;
+    const isCurrent = currentLv >= g.minLv && currentLv <= g.maxLv;
     const stateClass = isCurrent ? 'current' : unlocked ? 'unlocked' : 'locked';
     const icon = isCurrent ? '⚔️' : unlocked ? '✓' : '🔒';
-
+    const kmNeeded = Math.round(g.minKm);
     const canvasId = `rank-canvas-${i}`;
     return `
       <div class="rank-row ${stateClass}">
         <canvas class="rank-row-pixel" id="${canvasId}" width="16" height="16"></canvas>
         <div class="rank-row-info">
           <div class="rank-row-name">${icon} ${g.title}</div>
-          <div class="rank-row-levels">${g.levels} · À partir de ${g.minKm} km</div>
+          <div class="rank-row-levels">${g.levels} · À partir de ${kmNeeded} km</div>
         </div>
         ${isCurrent ? '<div class="rank-current-badge">Ton rang</div>' : ''}
-        ${!unlocked ? `<div class="rank-row-km">${g.minKm} km</div>` : ''}
+        ${!unlocked ? `<div class="rank-row-km">${kmNeeded} km</div>` : ''}
       </div>
-    `;
+    \`;
   }).join('');
-
-  // Draw pixel chars in modal after DOM update
   setTimeout(() => {
-    RANK_GROUPS.forEach((g, i) => {
-      drawPixelChar(`rank-canvas-${i}`, g.charIdx);
-    });
+    RANK_GROUPS.forEach((g, i) => { drawPixelChar(`rank-canvas-${i}`, g.charIdx); });
   }, 0);
 }
 
@@ -750,29 +756,29 @@ document.getElementById('rank-modal').addEventListener('click', function(e) {
 
 // ═══ LEVELS ═══
 const RANK_TITLES = [
-  "Aspirant",           // lv 1–9
-  "Foulard de Terre",   // lv 10–19
-  "Éclaireur des Pistes", // lv 20–29
-  "Traqueur des Sentiers", // lv 30–39
-  "Coursier des Royaumes", // lv 40–49
-  "Lame-Vent",          // lv 50–59
-  "Gardien des Lieues", // lv 60–69
-  "Chevalier Véloce",   // lv 70–79
-  "Chasseur de Brumes", // lv 80–89
-  "Estafette de l'Aube", // lv 90–99
-  "Seigneur des Foulées", // lv 100–109
-  "Maître du Souffle",  // lv 110–119
-  "Arpenteur des Abysses", // lv 120–129
-  "Fantôme Véloce",     // lv 130–139
-  "Conquérant des Cimes", // lv 140–149
-  "Invocateur du Vent", // lv 150–159
-  "Transcendant",       // lv 160–169
-  "Élu des Étoiles",    // lv 170–179
-  "Dieu-Coureur",       // lv 180–189
-  "Éternel Voyageur",   // lv 190–199
-  "Éternel Voyageur",   // lv 200
+  "Aspirant",              // lv 1–9   (index 0)
+  "Foulard de Terre",      // lv 10–19 (index 1)
+  "Éclaireur des Pistes",  // lv 20–29 (index 2)
+  "Traqueur des Sentiers", // lv 30–39 (index 3)
+  "Coursier des Royaumes", // lv 40–49 (index 4)
+  "Lame-Vent",             // lv 50–59 (index 5)
+  "Gardien des Lieues",    // lv 60–69 (index 6)
+  "Chevalier Véloce",      // lv 70–79 (index 7)
+  "Chasseur de Brumes",    // lv 80–89 (index 8)
+  "Estafette de l'Aube",  // lv 90–99 (index 9)
+  "Seigneur des Foulées",  // lv 100–109 (index 10)
+  "Maître du Souffle",     // lv 110–119 (index 11)
+  "Arpenteur des Abysses", // lv 120–129 (index 12)
+  "Fantôme Véloce",        // lv 130–139 (index 13)
+  "Conquérant des Cimes",  // lv 140–149 (index 14)
+  "Invocateur du Vent",    // lv 150–159 (index 15)
+  "Transcendant",          // lv 160–169 (index 16)
+  "Élu des Étoiles",       // lv 170–179 (index 17)
+  "Dieu-Coureur",          // lv 180–189 (index 18)
+  "Éternel Voyageur",      // lv 190–199 (index 19)
+  "Éternel Voyageur",      // lv 200    (index 20)
 ];
-function getRankTitle(l) { return RANK_TITLES[Math.min(Math.floor(l/10), RANK_TITLES.length-1)]; }
+function getRankTitle(l) { return RANK_TITLES[Math.min(Math.floor(l / 10), 20)]; }
 function kmForLevel(l) {
   if (l <= 1) return 0;
   if (l > 200) return 10000;
